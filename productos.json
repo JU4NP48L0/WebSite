@@ -9,7 +9,9 @@
     "imagen": "https://http2.mlstatic.com/D_727369-MLM93756212307_092025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-2475656615",
     "activo": true,
-    "destacado": false
+    "destacado": false,
+    "rating": 4.5,
+    "reviews": 45
   },
   {
     "id": "MLM2741796477",
@@ -21,7 +23,9 @@
     "imagen": "https://http2.mlstatic.com/D_930199-MLA106304190464_022026-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-2741796477",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.8,
+    "reviews": 520
   },
   {
     "id": "MLM4685671630",
@@ -33,7 +37,9 @@
     "imagen": "https://http2.mlstatic.com/D_704711-MLA99542392082_122025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4685671630",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.9,
+    "reviews": 340
   },
   {
     "id": "MLM4685749122",
@@ -45,7 +51,9 @@
     "imagen": "https://http2.mlstatic.com/D_806868-MLA99516422572_112025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4685749122",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.7,
+    "reviews": 280
   },
   {
     "id": "MLM2199223391",
@@ -57,7 +65,9 @@
     "imagen": "https://mla-s1-p.mlstatic.com/884508-MLM80901598440_122024-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-2199223391",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.9,
+    "reviews": 890
   },
   {
     "id": "MLM3189725246",
@@ -69,31 +79,37 @@
     "imagen": "https://mla-s1-p.mlstatic.com/919886-MLM77546481769_072024-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-3189725246",
     "activo": true,
-    "destacado": false
+    "destacado": false,
+    "rating": 4.6,
+    "reviews": 125
   },
   {
     "id": "MLM4330023114",
     "nombre": "5 Kits Brackets Azdent Mini Roth 0.018",
     "categoria": "Ortodoncia",
-    "descripcion": "Descubre la excelencia en ortodoncia con los 5 Kits Brackets Azdent Mini Roth 0.018, diseñados metic...",
+    "descripcion": "Descubre la excelencia en ortodoncia con los 5 Kits Brackets Azdent Mini Roth 0.018, diseñados meticulosamente",
     "precio": 349,
     "stock": 164,
     "imagen": "https://http2.mlstatic.com/D_956811-MLA96973658162_112025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4330023114",
     "activo": true,
-    "destacado": false
+    "destacado": false,
+    "rating": 4.7,
+    "reviews": 67
   },
   {
     "id": "MLM4329897640",
     "nombre": "5 Kits Brackets Azdent Mini Roth 0.022",
     "categoria": "Ortodoncia",
-    "descripcion": "Brackets Azdent Mini Roth 0.022 con Hooks 3-4-5 (20 pcs por kit). Brackets metálicos de alta preci...",
+    "descripcion": "Brackets Azdent Mini Roth 0.022 con Hooks 3-4-5 (20 pcs por kit). Brackets metálicos de alta precisión",
     "precio": 349,
     "stock": 157,
     "imagen": "https://http2.mlstatic.com/D_970258-MLM97351754491_112025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4329897640",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.8,
+    "reviews": 89
   },
   {
     "id": "MLM4403773136",
@@ -105,7 +121,9 @@
     "imagen": "https://http2.mlstatic.com/D_812237-MLM99144483937_112025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4403773136",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.6,
+    "reviews": 52
   },
   {
     "id": "MLM2619525933",
@@ -117,19 +135,23 @@
     "imagen": "https://http2.mlstatic.com/D_710069-MLM101190103449_122025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-2619525933",
     "activo": true,
-    "destacado": false
+    "destacado": false,
+    "rating": 4.5,
+    "reviews": 34
   },
   {
     "id": "MLM4376381138",
     "nombre": "Azdent Softclamp Grapa Abrazadera Dental 4 Pzs",
     "categoria": "Ortodoncia",
-    "descripcion": "Este set incluye 4 piezas de resina de dos tamaños diferentes, diseñadas para conseguir un aislamien...",
+    "descripcion": "Este set incluye 4 piezas de resina de dos tamaños diferentes, diseñadas para conseguir un aislamiento",
     "precio": 249,
     "stock": 5,
     "imagen": "https://http2.mlstatic.com/D_727403-MLM98639897667_112025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4376381138",
     "activo": true,
-    "destacado": false
+    "destacado": false,
+    "rating": 4.7,
+    "reviews": 28
   },
   {
     "id": "MLM2545275875",
@@ -141,7 +163,9 @@
     "imagen": "https://azdentall.com/cdn/shop/files/11_bc030029-1514-4148-861f-7d17e039b364.jpg?v=1704163432&width=1946",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-2545275875",
     "activo": true,
-    "destacado": false
+    "destacado": false,
+    "rating": 4.8,
+    "reviews": 95
   },
   {
     "id": "MLM4346432600",
@@ -153,7 +177,9 @@
     "imagen": "https://http2.mlstatic.com/D_994001-MLM97667130589_112025-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4346432600",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.9,
+    "reviews": 112
   },
   {
     "id": "MLM4682483172",
@@ -165,7 +191,9 @@
     "imagen": "https://http2.mlstatic.com/D_601157-MLM105185184867_012026-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4682483172",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.6,
+    "reviews": 41
   },
   {
     "id": "3525920430",
@@ -177,6 +205,8 @@
     "imagen": "https://http2.mlstatic.com/D_715053-MLA79713349123_102024-I.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-3525920430",
     "activo": true,
-    "destacado": true
+    "destacado": true,
+    "rating": 4.9,
+    "reviews": 1250
   }
 ]
