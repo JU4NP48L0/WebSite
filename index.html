@@ -345,6 +345,7 @@
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">T</div>
         TiendaDigital <span>CDMX</span>
       </a>
       <ul class="nav-links">
@@ -675,7 +676,6 @@
       let starsHTML = '★'.repeat(fullStars);
       if (hasHalfStar) starsHTML += '☆';
       while (starsHTML.length < 5) starsHTML += '☆';
-      const reviews = p.reviews || 50;
       const ratingHTML = `<div class="product-rating"><div class="stars">${starsHTML}</div><div class="rating-text">${rating.toFixed(1)} (${reviews})</div></div>`;
       const price = `<div class="product-price">$${p.precio.toLocaleString('es-MX')}</div>`;
       return `<div class="product-card">
