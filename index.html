@@ -668,27 +668,47 @@
     });
 
     function buildCard(p) {
-      const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
-      const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar ahora';
-      const rating = p.rating || 4.7;
-      const fullStars = Math.floor(rating);
-      const hasHalfStar = rating % 1 >= 0.5;
-      let starsHTML = '★'.repeat(fullStars);
-      if (hasHalfStar) starsHTML += '☆';
-      while (starsHTML.length < 5) starsHTML += '☆';
-      const ratingHTML = `<div class="product-rating"><div class="stars">${starsHTML}</div><div class="rating-text">${rating.toFixed(1)} (${reviews})</div></div>`;
-      const price = `<div class="product-price">$${p.precio.toLocaleString('es-MX')}</div>`;
-      return `<div class="product-card">
-        <div class="product-img"><span class="product-cat">${p.categoria}</span>${stockBadge}<img src="${p.imagen}" alt="${p.nombre}" loading="lazy"/></div>
+    const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
+    const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar ahora';
+  
+    const rating = typeof p.rating === 'number' ? p.rating : 4.7;
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+  
+    let starsHTML = '★'.repeat(fullStars);
+    if (hasHalfStar) starsHTML += '☆';
+    while (starsHTML.length < 5) starsHTML += '☆';
+  
+    // ✅ ya NO muestra (50)
+    const ratingHTML = `
+      <div class="product-rating">
+        <div class="stars">${starsHTML}</div>
+        <div class="rating-text">${rating.toFixed(1)}</div>
+      </div>
+    `;
+  
+    const price = `<div class="product-price">$${Number(p.precio || 0).toLocaleString('es-MX')}</div>`;
+  
+    return `
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-cat">${p.categoria || ''}</span>
+          ${stockBadge}
+          <img src="${p.imagen}" alt="${(p.nombre || '').replace(/"/g, '&quot;')}" loading="lazy"/>
+        </div>
         <div class="product-info">
           ${ratingHTML}
-          <h3 class="product-name">${p.nombre}</h3>
-          <p class="product-desc-short">${p.descripcion}</p>
+          <h3 class="product-name">${p.nombre || ''}</h3>
+          <p class="product-desc-short">${p.descripcion || ''}</p>
           ${price}
-          <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">${btnText} <span class="ml-badge">ML</span></a>
+          <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">
+            ${btnText} <span class="ml-badge">ML</span>
+          </a>
         </div>
-      </div>`;
-    }
+      </div>
+    `;
+  }
+
 
     async function loadProducts() {
       let productos = [];
