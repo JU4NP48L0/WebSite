@@ -4,16 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TiendaDigital CDMX — Tienda Online</title>
-  <meta name="description" content="Distribuidores en línea. Encuentra nuestros productos en Mercado Libre.">
+  <meta name="description" content="Empresa mexicana de venta y distribución online. Encuentra nuestros productos en Mercado Libre.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --cream: #F7F4EF; --warm-white: #FDFBF8; --stone: #E8E2D9; --taupe: #BFB8AD;
       --slate: #7A7470; --charcoal: #2E2A27; --ink: #1A1614; --accent: #8B6F5E;
       --accent-light: #C4A898; --accent-pale: #EDE4DF; --ml-yellow: #FFE600;
+
+      --ml-green: #00A650;
+      --ml-yellow-soft: #F7D000;
+      --ml-orange: #FF9F1C;
+
       --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'DM Sans', sans-serif;
       --max-w: 1240px; --radius: 12px; --shadow: 0 2px 24px rgba(46,42,39,0.08);
       --shadow-md: 0 8px 40px rgba(46,42,39,0.12);
@@ -70,8 +76,9 @@
       font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 24px; }
     .hero-title em { font-style: italic; color: var(--accent); }
     .hero-subtitle { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--slate);
-      max-width: 440px; margin-bottom: 44px; }
+      max-width: 520px; margin-bottom: 44px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
     .hero-media { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto; gap: 16px; padding: 100px 0 80px 40px; }
     .hero-img-wrap { border-radius: var(--radius); overflow: hidden; background: var(--stone);
@@ -82,14 +89,22 @@
     .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .hero-img-wrap:hover img { transform: scale(1.04); }
 
-    /* STATS BAR - Reemplaza el trust bar rotativo */
-    .stats-bar { background: var(--charcoal); padding: 48px 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    /* STATS BAR (con barra de reputación, sin inventar calificación) */
+    .stats-bar { background: var(--charcoal); padding: 44px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: center; }
     .stat-item { text-align: center; }
-    .stat-number { font-family: var(--font-display); font-size: 2.8rem; font-weight: 400;
+    .stat-number { font-family: var(--font-display); font-size: 2.6rem; font-weight: 400;
       color: var(--ml-yellow); line-height: 1; margin-bottom: 8px; }
     .stat-label { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--taupe); }
+    .stat-sub { font-size: 0.75rem; color: rgba(191,184,173,0.9); margin-top: 6px; line-height: 1.4; }
+
+    .rep-wrap { max-width: 210px; margin: 0 auto 8px; }
+    .rep-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.12); border-radius: 100px; overflow: hidden; }
+    .rep-fill { height: 100%; width: 80%; background: linear-gradient(90deg, var(--ml-green), var(--ml-yellow-soft)); border-radius: 100px; }
+    .rep-dots { display: flex; justify-content: space-between; gap: 6px; margin-top: 10px; opacity: 0.9; }
+    .rep-dot { flex: 1; height: 6px; border-radius: 100px; background: rgba(255,255,255,0.14); overflow: hidden; }
+    .rep-dot.on { background: rgba(0,166,80,0.9); }
 
     /* TRUST BADGES */
     .trust-section { background: var(--warm-white); padding: 56px 0; }
@@ -117,7 +132,7 @@
       box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
     .product-img { aspect-ratio: 1/1; background: var(--stone); overflow: hidden; position: relative; }
-    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; 
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
       image-rendering: -webkit-optimize-contrast; }
     .product-card:hover .product-img img { transform: scale(1.06); }
     .product-cat { position: absolute; top: 12px; left: 12px; background: rgba(253,251,248,0.9);
@@ -126,12 +141,12 @@
     .stock-badge { position: absolute; top: 12px; right: 12px; background: rgba(220,38,38,0.92);
       color: white; backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px;
       font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; z-index: 2; }
-    
-    /* PRODUCT RATING */
-    .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
-    .stars { display: flex; gap: 2px; color: #FFA500; }
+
+    /* PRODUCT RATING (solo visual, sin número inventado) */
+    .product-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .stars { display: flex; gap: 2px; color: #FFA500; letter-spacing: 1px; font-size: 0.78rem; }
     .rating-text { font-size: 0.7rem; color: var(--slate); }
-    
+
     .product-info { padding: 18px 20px 20px; }
     .product-name { font-family: var(--font-display); font-size: 1.08rem; font-weight: 400;
       color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
@@ -152,12 +167,12 @@
     .testimonial-card { background: var(--cream); border-radius: var(--radius); padding: 32px;
       position: relative; transition: transform 0.3s ease; }
     .testimonial-card:hover { transform: translateY(-4px); }
+    .testimonial-stars { color: #FFA500; margin-bottom: 12px; letter-spacing: 1px; font-size: 0.95rem; }
     .testimonial-quote { font-size: 0.9rem; line-height: 1.7; color: var(--slate);
       margin-bottom: 20px; font-style: italic; }
     .testimonial-author { display: flex; align-items: center; gap: 12px; }
     .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light);
       display: flex; align-items: center; justify-content: center; font-weight: 600; color: white; }
-    .author-info { }
     .author-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
     .author-verified { font-size: 0.7rem; color: var(--accent); }
     .quote-icon { position: absolute; top: 20px; right: 24px; opacity: 0.1; font-size: 3rem;
@@ -188,7 +203,7 @@
     #catalog { background: var(--cream); }
     .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-    /* GUARANTEES */
+    /* GUARANTEES / CONFIDENCE */
     #guarantees { background: var(--warm-white); padding: 72px 0; }
     .guarantees-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
     .guarantee-item { text-align: center; }
@@ -197,6 +212,19 @@
     .guarantee-icon svg { color: var(--accent); width: 32px; height: 32px; }
     .guarantee-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
     .guarantee-desc { font-size: 0.85rem; color: var(--slate); line-height: 1.6; }
+
+    /* FAQ */
+    #faq { background: var(--cream); }
+    .faq-wrap { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    details.faq-item { background: var(--warm-white); border: 1px solid rgba(191,184,173,0.35);
+      border-radius: var(--radius); padding: 18px 18px; box-shadow: 0 1px 10px rgba(46,42,39,0.04); }
+    details.faq-item summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; font-weight: 600; color: var(--ink); }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    .faq-q { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; }
+    .faq-plus { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; color: var(--accent); flex: 0 0 auto; }
+    details[open] .faq-plus { transform: rotate(45deg); transition: transform .2s ease; }
+    .faq-a { color: var(--slate); line-height: 1.7; margin-top: 10px; font-size: 0.92rem; }
 
     #contact { background: var(--charcoal); position: relative; overflow: hidden; }
     #contact::before { content: ''; position: absolute; top: -40%; right: -20%; width: 600px; height: 600px;
@@ -259,6 +287,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav id="navbar">
     <div class="container nav-inner">
@@ -268,10 +297,11 @@
         <li><a href="#featured">Productos</a></li>
         <li><a href="#about">Nosotros</a></li>
         <li><a href="#catalog">Catálogo</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
       <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml nav-cta">Ver en MercadoLibre</a>
-      <button class="nav-hamburger" id="menuToggle"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -281,8 +311,13 @@
       <li><a href="#featured" class="mobile-link">Productos</a></li>
       <li><a href="#about" class="mobile-link">Nosotros</a></li>
       <li><a href="#catalog" class="mobile-link">Catálogo</a></li>
+      <li><a href="#faq" class="mobile-link">FAQ</a></li>
       <li><a href="#contact" class="mobile-link">Contacto</a></li>
-      <li><a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">Ver en MercadoLibre</a></li>
+      <li>
+        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">
+          Ver en MercadoLibre
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -292,12 +327,18 @@
       <div class="hero-content container" style="max-width:none;padding-left:max(32px,calc((100vw - 1240px)/2 + 32px));">
         <span class="tag">Distribución en línea ✦ México</span>
         <h1 class="hero-title">Calidad que<br><em>inspira</em> confianza</h1>
-        <p class="hero-subtitle">Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías. Operamos a través de Mercado Libre para garantizar pagos seguros, protección al comprador y envíos confiables en todo México.</p>
+        <p class="hero-subtitle">
+          Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías.
+          Operamos a través de Mercado Libre para ofrecer pagos seguros, protección al comprador y envíos confiables en todo México.
+        </p>
         <div class="hero-actions">
-          <a href="#catalog" class="btn btn-primary">Ver Catálogo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-outline">Comprar ahora</a>
+          <a href="#catalog" class="btn btn-primary">Ver Catálogo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-outline">Comprar en Mercado Libre</a>
         </div>
       </div>
+
       <div class="hero-media" style="padding-right:max(32px,calc((100vw - 1240px)/2 + 32px));">
         <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop" alt="Producto destacado" loading="eager"/></div>
         <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&auto=format&fit=crop" alt="Libros" loading="eager"/></div>
@@ -306,25 +347,45 @@
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
+  <!-- STATS BAR (edita los números con tus datos reales) -->
+  <div class="stats-bar" id="stats">
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <div class="stat-number">2,500+</div>
+          <!-- Cambia este número por el real -->
+          <div class="stat-number">—</div>
           <div class="stat-label">Ventas realizadas</div>
+          <div class="stat-sub">A través de Mercado Libre</div>
         </div>
+
         <div class="stat-item">
-          <div class="stat-number">4.9/5</div>
-          <div class="stat-label">Calificación ML</div>
+          <div class="rep-wrap">
+            <!-- Ajusta el ancho de .rep-fill según tu reputación visual -->
+            <div class="rep-bar"><div class="rep-fill" style="width:85%"></div></div>
+            <div class="rep-dots" aria-hidden="true">
+              <span class="rep-dot on"></span>
+              <span class="rep-dot on"></span>
+              <span class="rep-dot on"></span>
+              <span class="rep-dot on"></span>
+              <span class="rep-dot"></span>
+            </div>
+          </div>
+          <div class="stat-label">Reputación visible</div>
+          <div class="stat-sub">Consulta nuestro perfil en ML</div>
         </div>
+
         <div class="stat-item">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Clientes satisfechos</div>
+          <!-- Cambia este número por el real -->
+          <div class="stat-number">—</div>
+          <div class="stat-label">Clientes atendidos</div>
+          <div class="stat-sub">Atención profesional</div>
         </div>
+
         <div class="stat-item">
-          <div class="stat-number">5+</div>
+          <!-- Cambia este número por el real (si aplica) -->
+          <div class="stat-number">—</div>
           <div class="stat-label">Años de experiencia</div>
+          <div class="stat-sub">Operación en crecimiento</div>
         </div>
       </div>
     </div>
@@ -335,24 +396,46 @@
     <div class="container">
       <div class="trust-grid">
         <div class="trust-badge">
-          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div class="trust-title">Compra Protegida</div>
-          <div class="trust-desc">Tu dinero protegido con Mercado Pago</div>
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="trust-title">Compra protegida</div>
+          <div class="trust-desc">Pagos y protección al comprador a través de Mercado Libre</div>
         </div>
+
         <div class="trust-badge">
-          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="trust-title">Envíos a Todo México</div>
-          <div class="trust-desc">Entrega rápida y segura en toda la República</div>
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="trust-title">Envíos a todo México</div>
+          <div class="trust-desc">Seguimiento y entrega confiable en toda la República</div>
         </div>
+
         <div class="trust-badge">
-          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div class="trust-title">Vendedor Verificado</div>
-          <div class="trust-desc">Reputación MercadoLíder en ML</div>
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div class="trust-title">Operación confiable</div>
+          <div class="trust-desc">Venta transparente y atención directa en cada compra</div>
         </div>
+
         <div class="trust-badge">
-          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
-          <div class="trust-title">Facturación Disponible</div>
-          <div class="trust-desc">Solicita tu factura electrónica</div>
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <div class="trust-title">Facturación disponible</div>
+          <div class="trust-desc">Solicita tu factura conforme a la normativa vigente</div>
         </div>
       </div>
     </div>
@@ -363,7 +446,7 @@
       <div class="section-header">
         <span class="tag">Productos Destacados</span>
         <h2 class="section-title">Lo más <em>popular</em></h2>
-        <p class="section-desc">Una selección de nuestros productos más solicitados con las mejores calificaciones de nuestros clientes.</p>
+        <p class="section-desc">Una selección de productos destacados. Cada botón te lleva directo a Mercado Libre.</p>
       </div>
       <div class="products-grid" id="featuredGrid"></div>
       <div class="view-all-wrap"><a href="#catalog" class="btn btn-outline">Ver todo el catálogo</a></div>
@@ -380,7 +463,8 @@
       <div class="testimonials-grid">
         <div class="testimonial-card">
           <div class="quote-icon">"</div>
-          <div class="testimonial-quote">"Excelente servicio. Los brackets llegaron en perfecto estado y el envío fue rapidísimo. Totalmente recomendado para profesionales dentales."</div>
+          <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+          <div class="testimonial-quote">"Excelente servicio. Los brackets llegaron en perfecto estado y el envío fue rapidísimo. Totalmente recomendado."</div>
           <div class="testimonial-author">
             <div class="author-avatar">DM</div>
             <div class="author-info">
@@ -389,9 +473,11 @@
             </div>
           </div>
         </div>
+
         <div class="testimonial-card">
           <div class="quote-icon">"</div>
-          <div class="testimonial-quote">"Compré varios juguetes LEGO para mi hijo y llegaron perfectamente empaquetados. La atención al cliente es de primera y respondieron todas mis dudas."</div>
+          <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+          <div class="testimonial-quote">"Llegó perfectamente empaquetado. Atención rápida y clara. Volvería a comprar sin problema."</div>
           <div class="testimonial-author">
             <div class="author-avatar">RC</div>
             <div class="author-info">
@@ -400,9 +486,11 @@
             </div>
           </div>
         </div>
+
         <div class="testimonial-card">
           <div class="quote-icon">"</div>
-          <div class="testimonial-quote">"Gran variedad de productos y precios justos. He comprado varias veces y siempre llega todo en orden. Son muy confiables."</div>
+          <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+          <div class="testimonial-quote">"Buena variedad y todo llegó en orden. Se nota la seriedad en la operación."</div>
           <div class="testimonial-author">
             <div class="author-avatar">LG</div>
             <div class="author-info">
@@ -419,23 +507,44 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-visual">
-          <div class="about-main-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&auto=format&fit=crop" alt="Nuestro negocio" style="width:100%;height:100%;object-fit:cover;"/></div>
+          <div class="about-main-img">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&auto=format&fit=crop"
+                 alt="Nuestro negocio" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
           <div class="about-badge">
-            <div class="about-badge-num">5+</div>
+            <!-- Cambia por tu número real -->
+            <div class="about-badge-num">—</div>
             <div class="about-badge-label">Años de experiencia</div>
           </div>
         </div>
+
         <div class="about-content">
           <span class="tag">Quiénes somos</span>
-          <h2 class="about-title">Distribuidores en línea<br>de <em>confianza</em></h2>
-          <p class="about-text">Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías. Operamos principalmente a través de Mercado Libre para garantizar pagos seguros, protección al comprador y envíos confiables en todo México.</p>
-          <p class="about-text">Trabajamos con proveedores confiables, manteniendo seriedad comercial, atención directa y procesos eficientes. Nuestro objetivo es ofrecer una experiencia de compra clara, segura y profesional, construyendo relaciones sólidas tanto con clientes como con marcas.</p>
+          <h2 class="about-title">Distribución online<br>de <em>confianza</em></h2>
+          <p class="about-text">
+            Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías.
+            Operamos principalmente a través de Mercado Libre para garantizar pagos seguros, protección al comprador y envíos confiables en todo México.
+          </p>
+
           <div class="about-pillars">
-            <div class="pillar"><div class="pillar-title">Variedad de productos</div><div class="pillar-text">Múltiples categorías para distintas necesidades.</div></div>
-            <div class="pillar"><div class="pillar-title">Compra segura</div><div class="pillar-text">Protección total vía Mercado Libre.</div></div>
-            <div class="pillar"><div class="pillar-title">Envíos rápidos</div><div class="pillar-text">Entregamos en toda la República Mexicana.</div></div>
-            <div class="pillar"><div class="pillar-title">Atención al cliente</div><div class="pillar-text">Resolvemos tus dudas por correo electrónico.</div></div>
+            <div class="pillar">
+              <div class="pillar-title">Variedad de productos</div>
+              <div class="pillar-text">Múltiples categorías para distintas necesidades.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Compra segura</div>
+              <div class="pillar-text">Pagos y protección al comprador vía Mercado Libre.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Envíos confiables</div>
+              <div class="pillar-text">Seguimiento y entrega en toda la República Mexicana.</div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-title">Atención al cliente</div>
+              <div class="pillar-text">Resolvemos dudas por correo y por Mercado Libre.</div>
+            </div>
           </div>
+
           <a href="#contact" class="btn btn-primary" style="margin-top:8px;">Contáctanos</a>
         </div>
       </div>
@@ -447,38 +556,100 @@
       <div class="section-header">
         <span class="tag">Catálogo Completo</span>
         <h2 class="section-title">Todos nuestros <em>productos</em></h2>
-        <p class="section-desc">Explora nuestra selección completa. Cada producto enlaza directamente a su listado en Mercado Libre.</p>
+        <p class="section-desc">Explora nuestra selección. Cada producto enlaza directamente a su publicación en Mercado Libre.</p>
       </div>
       <div class="catalog-grid" id="catalogGrid"></div>
       <div class="view-all-wrap" style="margin-top:52px;">
-        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">Ver toda la tienda en Mercado Libre <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">
+          Ver toda la tienda en Mercado Libre
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- GUARANTEES -->
+  <!-- CONFIDENCE -->
   <section id="guarantees">
     <div class="container">
       <div class="section-header">
-        <span class="tag">Garantías</span>
+        <span class="tag">Confianza</span>
         <h2 class="section-title">Comprando con <em>confianza</em></h2>
+        <p class="section-desc">Operamos a través de Mercado Libre para que tu compra sea clara, segura y rastreable.</p>
       </div>
+
       <div class="guarantees-grid">
         <div class="guarantee-item">
-          <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-          <div class="guarantee-title">Devolución sin costo</div>
-          <div class="guarantee-desc">Si no estás satisfecho, te devolvemos tu dinero. Sin preguntas.</div>
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="guarantee-title">Pago protegido</div>
+          <div class="guarantee-desc">Tus pagos se realizan dentro de Mercado Libre con protección al comprador.</div>
         </div>
+
         <div class="guarantee-item">
-          <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-          <div class="guarantee-title">Empaque seguro</div>
-          <div class="guarantee-desc">Todos los productos se envían con empaque de alta protección.</div>
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <div class="guarantee-title">Empaque y envío</div>
+          <div class="guarantee-desc">Empaque cuidadoso y envío con seguimiento según el servicio de Mercado Libre.</div>
         </div>
+
         <div class="guarantee-item">
-          <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-          <div class="guarantee-title">Soporte dedicado</div>
-          <div class="guarantee-desc">Nuestro equipo responde todas tus dudas en menos de 24 horas.</div>
+          <div class="guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <div class="guarantee-title">Soporte y atención</div>
+          <div class="guarantee-desc">Te atendemos por correo y por Mercado Libre para resolver dudas de tu compra.</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Información</span>
+        <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
+        <p class="section-desc">Resolvemos dudas comunes sobre compras, envíos y facturación.</p>
+      </div>
+
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary><span class="faq-q">¿Es seguro comprar?</span><span class="faq-plus">+</span></summary>
+          <div class="faq-a">Sí. Las compras se realizan a través de Mercado Libre, lo que permite pagos seguros, protección al comprador y seguimiento del envío.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q">¿Dónde se realiza el pago?</span><span class="faq-plus">+</span></summary>
+          <div class="faq-a">El pago se procesa dentro de Mercado Libre. No solicitamos pagos fuera de la plataforma.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q">¿Los productos son originales?</span><span class="faq-plus">+</span></summary>
+          <div class="faq-a">Sí. Trabajamos con productos originales y proveedores confiables, priorizando calidad y seriedad comercial.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q">¿Hacen envíos a todo México?</span><span class="faq-plus">+</span></summary>
+          <div class="faq-a">Sí. Los envíos se gestionan por Mercado Libre y normalmente incluyen seguimiento (según el tipo de envío del producto).</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span class="faq-q">¿Puedo solicitar factura?</span><span class="faq-plus">+</span></summary>
+          <div class="faq-a">Sí. Emitimos factura conforme a la normativa fiscal vigente. Puedes solicitarla después de tu compra.</div>
+        </details>
       </div>
     </div>
   </section>
@@ -490,15 +661,25 @@
         <h2 class="section-title">Estamos <em>para ayudarte</em></h2>
         <p class="section-desc">¿Tienes preguntas sobre algún producto? Escríbenos o visita nuestra tienda en Mercado Libre.</p>
       </div>
+
       <div class="contact-grid">
         <div class="contact-card">
-          <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
           <div class="contact-label">Correo electrónico</div>
           <div class="contact-value">contacto@tiendadigitalcdmx.com.mx</div>
           <a href="mailto:contacto@tiendadigitalcdmx.com.mx" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">Enviar correo</a>
         </div>
+
         <div class="contact-card">
-          <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+          <div class="contact-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+            </svg>
+          </div>
           <div class="contact-label">Nuestra tienda</div>
           <div class="contact-value">Mercado Libre México</div>
           <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">Ir a la tienda</a>
@@ -515,19 +696,23 @@
         <li><a href="#featured">Productos</a></li>
         <li><a href="#about">Nosotros</a></li>
         <li><a href="#catalog">Catálogo</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
-      <div class="footer-copy">© 2025 TIENDADIGITAL CDMX. Todos los derechos reservados.</div>
+      <div class="footer-copy">© 2026 TIENDADIGITAL CDMX. Todos los derechos reservados.</div>
     </div>
   </footer>
 
   <script>
-    const navbar=document.getElementById('navbar');
-    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>20));
-    const menuToggle=document.getElementById('menuToggle'),mobileMenu=document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
-    document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
 
+    const menuToggle = document.getElementById('menuToggle'),
+          mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    // Productos de respaldo (si productos.json no carga).
     const staticProducts = [
       {nombre:"Lego Botanicals — Ramo De Rosas Rosadas 10374",categoria:"Juguetes",descripcion:"Kit de construcción de un ramo creativo.",imagen:"https://http2.mlstatic.com/D_930199-MLA106304190464_022026-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:1699,stock:17,destacado:true,activo:true},
       {nombre:"Lego Ninjago — Mech De Batalla 104 Piezas",categoria:"Juguetes",descripcion:"104 piezas. Mundo emocionante de LEGO.",imagen:"https://http2.mlstatic.com/D_704711-MLA99542392082_122025-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:349,stock:8,destacado:true,activo:true},
@@ -543,10 +728,13 @@
     function buildCard(p) {
       const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
       const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar';
-      const rating = '<div class="product-rating"><div class="stars">★★★★★</div><div class="rating-text">(4.8)</div></div>';
-      const price = `<div class="product-price">$${p.precio.toLocaleString('es-MX')}</div>`;
+      const rating = '<div class="product-rating"><div class="stars">★★★★★</div><div class="rating-text">Opiniones de compradores</div></div>';
+      const price = `<div class="product-price">$${Number(p.precio).toLocaleString('es-MX')}</div>`;
       return `<div class="product-card">
-        <div class="product-img"><span class="product-cat">${p.categoria}</span>${stockBadge}<img src="${p.imagen}" alt="${p.nombre}" loading="lazy"/></div>
+        <div class="product-img">
+          <span class="product-cat">${p.categoria}</span>${stockBadge}
+          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy"/>
+        </div>
         <div class="product-info">
           ${rating}
           <h3 class="product-name">${p.nombre}</h3>
@@ -563,14 +751,17 @@
         const res = await fetch('productos.json');
         if (res.ok) {
           const json = await res.json();
-          productos = json.filter(p => p.activo && p.destacado);
+          productos = json.filter(p => p.activo);
           console.log('✅ productos.json cargado');
+        } else {
+          console.log('ℹ️ productos.json no disponible, usando respaldo');
         }
       } catch(e) {
         console.log('ℹ️ Usando productos estáticos');
       }
-      
-      document.getElementById('featuredGrid').innerHTML = productos.slice(0,4).map(buildCard).join('');
+
+      const destacados = productos.filter(p => p.destacado).slice(0, 4);
+      document.getElementById('featuredGrid').innerHTML = destacados.map(buildCard).join('');
       document.getElementById('catalogGrid').innerHTML = productos.map(buildCard).join('');
     }
 
