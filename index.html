@@ -17,8 +17,7 @@
       --accent-light: #C4A898; --accent-pale: #EDE4DF; --ml-yellow: #FFE600;
 
       --ml-green: #00A650;
-      --ml-yellow-soft: #F7D000;
-      --ml-orange: #FF9F1C;
+      --ml-green-soft: rgba(0,166,80,0.18);
 
       --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'DM Sans', sans-serif;
       --max-w: 1240px; --radius: 12px; --shadow: 0 2px 24px rgba(46,42,39,0.08);
@@ -89,9 +88,9 @@
     .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .hero-img-wrap:hover img { transform: scale(1.04); }
 
-    /* STATS BAR (con barra de reputación, sin inventar calificación) */
+    /* STATS BAR (3 items: ventas, seguridad ML, experiencia) */
     .stats-bar { background: var(--charcoal); padding: 44px 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: center; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: center; }
     .stat-item { text-align: center; }
     .stat-number { font-family: var(--font-display); font-size: 2.6rem; font-weight: 400;
       color: var(--ml-yellow); line-height: 1; margin-bottom: 8px; }
@@ -99,12 +98,23 @@
       color: var(--taupe); }
     .stat-sub { font-size: 0.75rem; color: rgba(191,184,173,0.9); margin-top: 6px; line-height: 1.4; }
 
-    .rep-wrap { max-width: 210px; margin: 0 auto 8px; }
-    .rep-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.12); border-radius: 100px; overflow: hidden; }
-    .rep-fill { height: 100%; width: 80%; background: linear-gradient(90deg, var(--ml-green), var(--ml-yellow-soft)); border-radius: 100px; }
-    .rep-dots { display: flex; justify-content: space-between; gap: 6px; margin-top: 10px; opacity: 0.9; }
-    .rep-dot { flex: 1; height: 6px; border-radius: 100px; background: rgba(255,255,255,0.14); overflow: hidden; }
-    .rep-dot.on { background: rgba(0,166,80,0.9); }
+    /* Nuevo “reputación” más confiable: seguridad + operación ML (sin pedir que consulten perfil) */
+    .ml-trust { max-width: 260px; margin: 0 auto 10px; }
+    .ml-trust-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .ml-trust-icon {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--ml-green-soft);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ml-trust-icon svg { width: 18px; height: 18px; color: var(--ml-green); }
+    .ml-trust-text { text-align: left; }
+    .ml-trust-title { font-size: 0.82rem; font-weight: 700; color: var(--warm-white); line-height: 1.1; }
+    .ml-trust-desc { font-size: 0.72rem; color: rgba(191,184,173,0.95); margin-top: 2px; line-height: 1.25; }
 
     /* TRUST BADGES */
     .trust-section { background: var(--warm-white); padding: 56px 0; }
@@ -132,8 +142,7 @@
       box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
     .product-img { aspect-ratio: 1/1; background: var(--stone); overflow: hidden; position: relative; }
-    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;
-      image-rendering: -webkit-optimize-contrast; }
+    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
     .product-card:hover .product-img img { transform: scale(1.06); }
     .product-cat { position: absolute; top: 12px; left: 12px; background: rgba(253,251,248,0.9);
       backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px; font-size: 0.65rem;
@@ -142,10 +151,12 @@
       color: white; backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px;
       font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; z-index: 2; }
 
-    /* PRODUCT RATING (solo visual, sin número inventado) */
-    .product-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .stars { display: flex; gap: 2px; color: #FFA500; letter-spacing: 1px; font-size: 0.78rem; }
-    .rating-text { font-size: 0.7rem; color: var(--slate); }
+    /* Estrellas por producto (si hay rating) */
+    .product-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .stars { display: inline-flex; gap: 2px; letter-spacing: 1px; font-size: 0.9rem; }
+    .star-full { color: #FFA500; }
+    .star-empty { color: rgba(122,116,112,0.35); }
+    .rating-text { font-size: 0.72rem; color: var(--slate); }
 
     .product-info { padding: 18px 20px 20px; }
     .product-name { font-family: var(--font-display); font-size: 1.08rem; font-weight: 400;
@@ -161,57 +172,8 @@
       border-radius: 4px; font-weight: 700; letter-spacing: 0.02em; }
     .view-all-wrap { text-align: center; margin-top: 52px; }
 
-    /* TESTIMONIALS */
-    #testimonials { background: var(--warm-white); }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .testimonial-card { background: var(--cream); border-radius: var(--radius); padding: 32px;
-      position: relative; transition: transform 0.3s ease; }
-    .testimonial-card:hover { transform: translateY(-4px); }
-    .testimonial-stars { color: #FFA500; margin-bottom: 12px; letter-spacing: 1px; font-size: 0.95rem; }
-    .testimonial-quote { font-size: 0.9rem; line-height: 1.7; color: var(--slate);
-      margin-bottom: 20px; font-style: italic; }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light);
-      display: flex; align-items: center; justify-content: center; font-weight: 600; color: white; }
-    .author-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
-    .author-verified { font-size: 0.7rem; color: var(--accent); }
-    .quote-icon { position: absolute; top: 20px; right: 24px; opacity: 0.1; font-size: 3rem;
-      font-family: Georgia, serif; color: var(--accent); }
-
-    #about { background: var(--warm-white); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-visual { position: relative; }
-    .about-main-img { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/5; background: var(--stone); }
-    .about-badge { position: absolute; bottom: -28px; right: -28px; width: 160px; height: 160px;
-      background: var(--charcoal); border-radius: 50%; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center; padding: 24px; box-shadow: var(--shadow-md); }
-    .about-badge-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300;
-      color: var(--warm-white); line-height: 1; }
-    .about-badge-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--taupe); margin-top: 4px; }
-    .about-content .tag { margin-bottom: 20px; }
-    .about-title { font-family: var(--font-display); font-size: clamp(2rem, 3vw, 3rem);
-      font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 24px; }
-    .about-title em { font-style: italic; color: var(--accent); }
-    .about-text { font-size: 0.95rem; line-height: 1.8; color: var(--slate); margin-bottom: 20px; }
-    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 36px 0; }
-    .pillar { background: var(--cream); border-radius: var(--radius); padding: 18px 20px;
-      border-left: 3px solid var(--accent-light); }
-    .pillar-title { font-size: 0.8rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; letter-spacing: 0.04em; }
-    .pillar-text { font-size: 0.75rem; color: var(--slate); line-height: 1.5; }
-
     #catalog { background: var(--cream); }
     .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-
-    /* GUARANTEES / CONFIDENCE */
-    #guarantees { background: var(--warm-white); padding: 72px 0; }
-    .guarantees-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto; }
-    .guarantee-item { text-align: center; }
-    .guarantee-icon { width: 72px; height: 72px; background: var(--accent-pale); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-    .guarantee-icon svg { color: var(--accent); width: 32px; height: 32px; }
-    .guarantee-title { font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
-    .guarantee-desc { font-size: 0.85rem; color: var(--slate); line-height: 1.6; }
 
     /* FAQ */
     #faq { background: var(--cream); }
@@ -227,19 +189,13 @@
     .faq-a { color: var(--slate); line-height: 1.7; margin-top: 10px; font-size: 0.92rem; }
 
     #contact { background: var(--charcoal); position: relative; overflow: hidden; }
-    #contact::before { content: ''; position: absolute; top: -40%; right: -20%; width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(139,111,94,0.15) 0%, transparent 70%); pointer-events: none; }
     #contact .section-header .section-title { color: var(--warm-white); }
     #contact .section-header .section-desc { color: var(--taupe); }
     #contact .section-header .tag { color: var(--accent-light); border-color: rgba(196,168,152,0.35); }
+
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; margin: 0 auto; }
     .contact-card { background: rgba(247,244,239,0.06); border: 1px solid rgba(191,184,173,0.15);
-      border-radius: var(--radius); padding: 36px 32px; text-align: center;
-      transition: background 0.25s ease, border-color 0.25s ease; }
-    .contact-card:hover { background: rgba(247,244,239,0.1); border-color: rgba(191,184,173,0.3); }
-    .contact-icon { width: 52px; height: 52px; background: rgba(139,111,94,0.2); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-    .contact-icon svg { color: var(--accent-light); }
+      border-radius: var(--radius); padding: 36px 32px; text-align: center; }
     .contact-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--taupe); margin-bottom: 8px; }
     .contact-value { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
@@ -257,14 +213,10 @@
 
     @media (max-width: 1024px) {
       .products-grid, .catalog-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-grid, .trust-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-      .guarantees-grid { grid-template-columns: 1fr; }
+      .stats-grid, .trust-grid { grid-template-columns: repeat(2, 1fr); }
       #hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-media { display: none; }
       .hero-content { padding: 60px 0; }
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .about-visual { max-width: 480px; }
-      .about-badge { right: 0; bottom: -24px; width: 130px; height: 130px; }
       .contact-grid { grid-template-columns: 1fr; max-width: 420px; }
     }
     @media (max-width: 768px) {
@@ -274,8 +226,6 @@
       .nav-hamburger { display: flex; }
       .products-grid, .catalog-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .stats-grid, .trust-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .about-pillars { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
@@ -295,7 +245,6 @@
       <ul class="nav-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#featured">Productos</a></li>
-        <li><a href="#about">Nosotros</a></li>
         <li><a href="#catalog">Catálogo</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contacto</a></li>
@@ -309,7 +258,6 @@
     <ul>
       <li><a href="#hero" class="mobile-link">Inicio</a></li>
       <li><a href="#featured" class="mobile-link">Productos</a></li>
-      <li><a href="#about" class="mobile-link">Nosotros</a></li>
       <li><a href="#catalog" class="mobile-link">Catálogo</a></li>
       <li><a href="#faq" class="mobile-link">FAQ</a></li>
       <li><a href="#contact" class="mobile-link">Contacto</a></li>
@@ -347,46 +295,42 @@
     </div>
   </section>
 
-  <!-- STATS BAR (edita los números con tus datos reales) -->
+  <!-- STATS BAR -->
   <div class="stats-bar" id="stats">
     <div class="container">
       <div class="stats-grid">
+
         <div class="stat-item">
-          <!-- Cambia este número por el real -->
-          <div class="stat-number">—</div>
+          <div class="stat-number">2500+</div>
           <div class="stat-label">Ventas realizadas</div>
-          <div class="stat-sub">A través de Mercado Libre</div>
+          <div class="stat-sub">Experiencia operando en línea</div>
         </div>
 
         <div class="stat-item">
-          <div class="rep-wrap">
-            <!-- Ajusta el ancho de .rep-fill según tu reputación visual -->
-            <div class="rep-bar"><div class="rep-fill" style="width:85%"></div></div>
-            <div class="rep-dots" aria-hidden="true">
-              <span class="rep-dot on"></span>
-              <span class="rep-dot on"></span>
-              <span class="rep-dot on"></span>
-              <span class="rep-dot on"></span>
-              <span class="rep-dot"></span>
+          <div class="ml-trust">
+            <div class="ml-trust-pill" style="justify-content:center;">
+              <span class="ml-trust-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              </span>
+              <span class="ml-trust-text">
+                <div class="ml-trust-title">Compra segura</div>
+                <div class="ml-trust-desc">Pagos protegidos vía Mercado Libre</div>
+              </span>
             </div>
           </div>
-          <div class="stat-label">Reputación visible</div>
-          <div class="stat-sub">Consulta nuestro perfil en ML</div>
+          <div class="stat-label">Operación con respaldo</div>
+          <div class="stat-sub">Protección al comprador y seguimiento</div>
         </div>
 
         <div class="stat-item">
-          <!-- Cambia este número por el real -->
-          <div class="stat-number">—</div>
-          <div class="stat-label">Clientes atendidos</div>
-          <div class="stat-sub">Atención profesional</div>
-        </div>
-
-        <div class="stat-item">
-          <!-- Cambia este número por el real (si aplica) -->
-          <div class="stat-number">—</div>
+          <div class="stat-number">5+</div>
           <div class="stat-label">Años de experiencia</div>
-          <div class="stat-sub">Operación en crecimiento</div>
+          <div class="stat-sub">Venta y distribución online</div>
         </div>
+
       </div>
     </div>
   </div>
@@ -408,7 +352,9 @@
         <div class="trust-badge">
           <div class="trust-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
           </div>
           <div class="trust-title">Envíos a todo México</div>
@@ -418,7 +364,8 @@
         <div class="trust-badge">
           <div class="trust-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
           </div>
           <div class="trust-title">Operación confiable</div>
@@ -453,104 +400,6 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">Reseñas</span>
-        <h2 class="section-title">Lo que dicen nuestros <em>clientes</em></h2>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="quote-icon">"</div>
-          <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
-          <div class="testimonial-quote">"Excelente servicio. Los brackets llegaron en perfecto estado y el envío fue rapidísimo. Totalmente recomendado."</div>
-          <div class="testimonial-author">
-            <div class="author-avatar">DM</div>
-            <div class="author-info">
-              <div class="author-name">Dra. Martha Sánchez</div>
-              <div class="author-verified">✓ Compra verificada</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="quote-icon">"</div>
-          <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
-          <div class="testimonial-quote">"Llegó perfectamente empaquetado. Atención rápida y clara. Volvería a comprar sin problema."</div>
-          <div class="testimonial-author">
-            <div class="author-avatar">RC</div>
-            <div class="author-info">
-              <div class="author-name">Roberto Cruz</div>
-              <div class="author-verified">✓ Compra verificada</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="quote-icon">"</div>
-          <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
-          <div class="testimonial-quote">"Buena variedad y todo llegó en orden. Se nota la seriedad en la operación."</div>
-          <div class="testimonial-author">
-            <div class="author-avatar">LG</div>
-            <div class="author-info">
-              <div class="author-name">Laura Gómez</div>
-              <div class="author-verified">✓ Compra verificada</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-visual">
-          <div class="about-main-img">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&auto=format&fit=crop"
-                 alt="Nuestro negocio" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <div class="about-badge">
-            <!-- Cambia por tu número real -->
-            <div class="about-badge-num">—</div>
-            <div class="about-badge-label">Años de experiencia</div>
-          </div>
-        </div>
-
-        <div class="about-content">
-          <span class="tag">Quiénes somos</span>
-          <h2 class="about-title">Distribución online<br>de <em>confianza</em></h2>
-          <p class="about-text">
-            Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías.
-            Operamos principalmente a través de Mercado Libre para garantizar pagos seguros, protección al comprador y envíos confiables en todo México.
-          </p>
-
-          <div class="about-pillars">
-            <div class="pillar">
-              <div class="pillar-title">Variedad de productos</div>
-              <div class="pillar-text">Múltiples categorías para distintas necesidades.</div>
-            </div>
-            <div class="pillar">
-              <div class="pillar-title">Compra segura</div>
-              <div class="pillar-text">Pagos y protección al comprador vía Mercado Libre.</div>
-            </div>
-            <div class="pillar">
-              <div class="pillar-title">Envíos confiables</div>
-              <div class="pillar-text">Seguimiento y entrega en toda la República Mexicana.</div>
-            </div>
-            <div class="pillar">
-              <div class="pillar-title">Atención al cliente</div>
-              <div class="pillar-text">Resolvemos dudas por correo y por Mercado Libre.</div>
-            </div>
-          </div>
-
-          <a href="#contact" class="btn btn-primary" style="margin-top:8px;">Contáctanos</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="catalog">
     <div class="container">
       <div class="section-header">
@@ -570,53 +419,6 @@
     </div>
   </section>
 
-  <!-- CONFIDENCE -->
-  <section id="guarantees">
-    <div class="container">
-      <div class="section-header">
-        <span class="tag">Confianza</span>
-        <h2 class="section-title">Comprando con <em>confianza</em></h2>
-        <p class="section-desc">Operamos a través de Mercado Libre para que tu compra sea clara, segura y rastreable.</p>
-      </div>
-
-      <div class="guarantees-grid">
-        <div class="guarantee-item">
-          <div class="guarantee-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
-          </div>
-          <div class="guarantee-title">Pago protegido</div>
-          <div class="guarantee-desc">Tus pagos se realizan dentro de Mercado Libre con protección al comprador.</div>
-        </div>
-
-        <div class="guarantee-item">
-          <div class="guarantee-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <div class="guarantee-title">Empaque y envío</div>
-          <div class="guarantee-desc">Empaque cuidadoso y envío con seguimiento según el servicio de Mercado Libre.</div>
-        </div>
-
-        <div class="guarantee-item">
-          <div class="guarantee-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-            </svg>
-          </div>
-          <div class="guarantee-title">Soporte y atención</div>
-          <div class="guarantee-desc">Te atendemos por correo y por Mercado Libre para resolver dudas de tu compra.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
   <section id="faq">
     <div class="container">
       <div class="section-header">
@@ -664,22 +466,12 @@
 
       <div class="contact-grid">
         <div class="contact-card">
-          <div class="contact-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </div>
           <div class="contact-label">Correo electrónico</div>
           <div class="contact-value">contacto@tiendadigitalcdmx.com.mx</div>
           <a href="mailto:contacto@tiendadigitalcdmx.com.mx" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">Enviar correo</a>
         </div>
 
         <div class="contact-card">
-          <div class="contact-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
-            </svg>
-          </div>
           <div class="contact-label">Nuestra tienda</div>
           <div class="contact-value">Mercado Libre México</div>
           <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">Ir a la tienda</a>
@@ -694,7 +486,6 @@
       <ul class="footer-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#featured">Productos</a></li>
-        <li><a href="#about">Nosotros</a></li>
         <li><a href="#catalog">Catálogo</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contacto</a></li>
@@ -712,57 +503,69 @@
     menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-    // Productos de respaldo (si productos.json no carga).
-    const staticProducts = [
-      {nombre:"Lego Botanicals — Ramo De Rosas Rosadas 10374",categoria:"Juguetes",descripcion:"Kit de construcción de un ramo creativo.",imagen:"https://http2.mlstatic.com/D_930199-MLA106304190464_022026-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:1699,stock:17,destacado:true,activo:true},
-      {nombre:"Lego Ninjago — Mech De Batalla 104 Piezas",categoria:"Juguetes",descripcion:"104 piezas. Mundo emocionante de LEGO.",imagen:"https://http2.mlstatic.com/D_704711-MLA99542392082_122025-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:349,stock:8,destacado:true,activo:true},
-      {nombre:"Lego® City — Auto Deportivo Rojo 60448",categoria:"Juguetes",descripcion:"109 piezas. Superauto de juguete.",imagen:"https://http2.mlstatic.com/D_806868-MLA99516422572_112025-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:349,stock:13,destacado:true,activo:true},
-      {nombre:"Dandadan — Tomo / Volumen A Elegir (Panini)",categoria:"Libros",descripcion:"Volumen a elegir. Nuevos, en físico.",imagen:"https://mla-s2-p.mlstatic.com/884508-MLM80901598440_122024-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:99,stock:6,destacado:true,activo:true},
-      {nombre:"Box Set Demon Slayer",categoria:"Libros",descripcion:"Serie completa de 23 tomos Panini 2023.",imagen:"https://http2.mlstatic.com/D_715053-MLA79713349123_102024-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:2999,stock:0,destacado:true,activo:true},
-      {nombre:"5 Kits Brackets Azdent Mini Roth 0.022",categoria:"Ortodoncia",descripcion:"Brackets metálicos de alta precisión.",imagen:"https://http2.mlstatic.com/D_970258-MLM97351754491_112025-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:349,stock:157,destacado:true,activo:true},
-      {nombre:"Azdent 10 Arcos De Acero Inoxidable",categoria:"Ortodoncia",descripcion:"10 piezas por paquete de alta calidad.",imagen:"https://http2.mlstatic.com/D_812237-MLM99144483937_112025-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:99,stock:28,destacado:true,activo:true},
-      {nombre:"Brackets Autoligables Azdent Roth 0.022",categoria:"Ortodoncia",descripcion:"Elección ideal para profesionales.",imagen:"https://http2.mlstatic.com/D_994001-MLM97667130589_112025-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:449,stock:61,destacado:true,activo:true},
-      {nombre:"Pack 5 Puntas Escalador Dental Ultrasónico EMS",categoria:"Ortodoncia",descripcion:"Producto nuevo para uso profesional.",imagen:"https://http2.mlstatic.com/D_601157-MLM105185184867_012026-O.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",precio:399,stock:1,destacado:true,activo:true}
-    ];
+    // --- Helpers de estrellas ---
+    function renderStars(rating) {
+      const r = Number(rating);
+      if (!Number.isFinite(r) || r <= 0) return ''; // si no hay rating, no mostramos estrellas
+      const full = Math.round(r); // redondeo simple (puedes cambiar si quieres medios)
+      const max = 5;
+      let html = '<div class="product-rating" aria-label="Calificación del producto">';
+      html += '<div class="stars">';
+      for (let i = 1; i <= max; i++) {
+        html += i <= full ? '<span class="star-full">★</span>' : '<span class="star-empty">★</span>';
+      }
+      html += '</div>';
+      html += '</div>';
+      return html;
+    }
+
+    async function loadProducts() {
+      let productos = [];
+      try {
+        const res = await fetch('productos.json');
+        if (res.ok) {
+          const json = await res.json();
+          productos = json.filter(p => p.activo);
+        }
+      } catch(e) {}
+
+      // Si no cargó, queda vacío, pero no truena
+      const destacados = productos.filter(p => p.destacado).slice(0, 4);
+
+      document.getElementById('featuredGrid').innerHTML = destacados.map(buildCard).join('');
+      document.getElementById('catalogGrid').innerHTML = productos.map(buildCard).join('');
+    }
 
     function buildCard(p) {
       const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
       const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar';
-      const rating = '<div class="product-rating"><div class="stars">★★★★★</div><div class="rating-text">Opiniones de compradores</div></div>';
       const price = `<div class="product-price">$${Number(p.precio).toLocaleString('es-MX')}</div>`;
+
+      // rating: solo si existe en productos.json (NO inventamos)
+      const stars = (p.rating != null) ? renderStars(p.rating) : '';
+
+      // texto opcional: reseñas (solo si existe)
+      const reviews = (p.reviews != null && Number.isFinite(Number(p.reviews)))
+        ? `<div class="rating-text">${Number(p.reviews).toLocaleString('es-MX')} reseñas</div>`
+        : '';
+
+      const ratingBlock = stars
+        ? `<div class="product-rating">${stars.replace('<div class="product-rating" aria-label="Calificación del producto">','').replace('</div>','')}${reviews}</div>`
+        : '';
+
       return `<div class="product-card">
         <div class="product-img">
           <span class="product-cat">${p.categoria}</span>${stockBadge}
           <img src="${p.imagen}" alt="${p.nombre}" loading="lazy"/>
         </div>
         <div class="product-info">
-          ${rating}
+          ${ratingBlock}
           <h3 class="product-name">${p.nombre}</h3>
           <p class="product-desc-short">${p.descripcion}</p>
           ${price}
           <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">${btnText} <span class="ml-logo-sm">ML</span></a>
         </div>
       </div>`;
-    }
-
-    async function loadProducts() {
-      let productos = staticProducts;
-      try {
-        const res = await fetch('productos.json');
-        if (res.ok) {
-          const json = await res.json();
-          productos = json.filter(p => p.activo);
-          console.log('✅ productos.json cargado');
-        } else {
-          console.log('ℹ️ productos.json no disponible, usando respaldo');
-        }
-      } catch(e) {
-        console.log('ℹ️ Usando productos estáticos');
-      }
-
-      const destacados = productos.filter(p => p.destacado).slice(0, 4);
-      document.getElementById('featuredGrid').innerHTML = destacados.map(buildCard).join('');
-      document.getElementById('catalogGrid').innerHTML = productos.map(buildCard).join('');
     }
 
     loadProducts();
