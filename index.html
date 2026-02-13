@@ -339,6 +339,74 @@
       .trust-grid { grid-template-columns: 1fr; }
       .hero-visual { grid-template-columns: 1fr; }
     }
+
+    /* ===== Mobile UX improvements + Back to top ===== */
+    @media (max-width: 768px){
+      /* Catálogo: carrusel horizontal para evitar scroll largo */
+      .catalog-grid{
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 82%;
+        gap: 16px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 6px 4px 14px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .catalog-grid .product-card{ scroll-snap-align: start; }
+
+      .catalog-grid::-webkit-scrollbar{ height: 8px; }
+      .catalog-grid::-webkit-scrollbar-thumb{
+        background: rgba(100,116,139,.35);
+        border-radius: 999px;
+      }
+
+      /* Contacto: evitar cortes de texto y asegurar que todo quepa */
+      #contact .container{ padding-left: 20px; padding-right: 20px; }
+      .contact-card{ width: 100%; padding: 22px; }
+      .contact-value{
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        font-size: 1.05rem;
+      }
+      .contact-card .btn,
+      .contact-card .btn-outline,
+      .contact-card .btn-ml{
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Ajuste del círculo decorativo para que no estorbe en móvil */
+      #contact::before{
+        width: 380px;
+        height: 380px;
+        top: -140px;
+        right: -180px;
+      }
+    }
+
+    #backToTop{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    #backToTop:hover{ transform: translateY(-2px); }
+    #backToTop svg{ width: 18px; height: 18px; color: var(--accent-primary); }
   </style>
 </head>
 <body>
@@ -647,12 +715,30 @@
     </div>
   </footer>
 
+  <button id="backToTop" aria-label="Subir">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5"></path>
+      <path d="M5 12l7-7 7 7"></path>
+    </svg>
+  </button>
+
   <script>
     // Productos embebidos (fallback si falla fetch)
     const PRODUCTS_FALLBACK = [{"id":"MLM2475656615","nombre":"C\u00f3digo Flowkey Premium \u2014 3 y 6 Meses","categoria":"General","descripcion":"C\u00f3digos de 3 y 6 Meses Flowkey Premium. El c\u00f3digo se entrega por chat privado de MercadoLibre.","precio":400,"stock":3,"imagen":"https://http2.mlstatic.com/D_727369-MLM93756212307_092025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2475656615","activo":true,"destacado":false,"rating":4.5},{"id":"MLM2741796477","nombre":"Lego Botanicals \u2014 Ramo De Rosas Rosadas 10374","categoria":"Juguetes","descripcion":"Kit de construcci\u00f3n de un ramo: Cultiva la alegr\u00eda creativa con el set de construcci\u00f3n para adulto...","precio":1699,"stock":17,"imagen":"https://http2.mlstatic.com/D_930199-MLA106304190464_022026-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2741796477","activo":true,"destacado":true,"rating":4.8},{"id":"MLM4685671630","nombre":"Lego Ninjago \u2014 Mech De Batalla 104 Piezas","categoria":"Juguetes","descripcion":"Descubre el emocionante mundo de LEGO Ninjago con el Mech de Batalla 6465066. Este set incluye 104...","precio":349,"stock":8,"imagen":"https://http2.mlstatic.com/D_704711-MLA99542392082_122025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4685671630","activo":true,"destacado":true,"rating":4.9},{"id":"MLM4685749122","nombre":"Lego\u00ae City \u2014 Auto Deportivo Rojo 60448","categoria":"Juguetes","descripcion":"Descubre el emocionante mundo de Lego\u00ae City con el Auto Deportivo Rojo 60448. Este set incluye 109...","precio":349,"stock":13,"imagen":"https://http2.mlstatic.com/D_806868-MLA99516422572_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4685749122","activo":true,"destacado":true,"rating":4.7},{"id":"MLM2199223391","nombre":"Dandadan \u2014 Tomo / Volumen A Elegir (Panini)","categoria":"Libros","descripcion":"El precio es por tomo. Disponibles para env\u00edo inmediato. Nuevos, en F\u00edsico y en espa\u00f1ol.","precio":99,"stock":6,"imagen":"https://mla-s1-p.mlstatic.com/884508-MLM80901598440_122024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2199223391","activo":true,"destacado":true,"rating":4.9},{"id":"MLM3189725246","nombre":"Pantuflas Tibur\u00f3n Unisex \u2014 Sharklas","categoria":"Moda","descripcion":"Estas pantuflas de tibur\u00f3n son ideales para todas las edades, desde ni\u00f1os hasta adultos. Hechas con ...","precio":384,"stock":2,"imagen":"https://mla-s1-p.mlstatic.com/919886-MLM77546481769_072024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-3189725246","activo":true,"destacado":false,"rating":4.6},{"id":"MLM4330023114","nombre":"5 Kits Brackets Azdent Mini Roth 0.018","categoria":"Ortodoncia","descripcion":"Descubre la excelencia en ortodoncia con los 5 Kits Brackets Azdent Mini Roth 0.018, dise\u00f1ados meticulosamente","precio":349,"stock":164,"imagen":"https://http2.mlstatic.com/D_956811-MLA96973658162_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4330023114","activo":true,"destacado":false,"rating":4.7},{"id":"MLM4329897640","nombre":"5 Kits Brackets Azdent Mini Roth 0.022","categoria":"Ortodoncia","descripcion":"Brackets Azdent Mini Roth 0.022 con Hooks 3-4-5 (20 pcs por kit). Brackets met\u00e1licos de alta precisi\u00f3n","precio":349,"stock":157,"imagen":"https://http2.mlstatic.com/D_970258-MLM97351754491_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4329897640","activo":true,"destacado":true,"rating":4.8},{"id":"MLM4403773136","nombre":"Azdent 10 Arcos De Acero Inoxidable","categoria":"Ortodoncia","descripcion":"Arcos de Ortodoncia AZDENT \u2013 10 piezas por paquete. Marca: AZDENT. Material: Acero inoxidable de al...","precio":99,"stock":28,"imagen":"https://http2.mlstatic.com/D_812237-MLM99144483937_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4403773136","activo":true,"destacado":true,"rating":4.6},{"id":"MLM2619525933","nombre":"Azdent Resorte Torsi\u00f3n Ortodoncia 10 Pzs","categoria":"Ortodoncia","descripcion":"El resorte de torsi\u00f3n para ortodoncia de la marca Azdent es una herramienta esencial para profesiona...","precio":129,"stock":1,"imagen":"https://http2.mlstatic.com/D_710069-MLM101190103449_122025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2619525933","activo":true,"destacado":false,"rating":4.5},{"id":"MLM4376381138","nombre":"Azdent Softclamp Grapa Abrazadera Dental 4 Pzs","categoria":"Ortodoncia","descripcion":"Este set incluye 4 piezas de resina de dos tama\u00f1os diferentes, dise\u00f1adas para conseguir un aislamiento","precio":249,"stock":5,"imagen":"https://http2.mlstatic.com/D_727403-MLM98639897667_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4376381138","activo":true,"destacado":false,"rating":4.7},{"id":"MLM2545275875","nombre":"Brackets Autoligables Azdent MBT 0.022","categoria":"Ortodoncia","descripcion":"Los Brackets Autoligables Azdent MBT 0.022 con Hooks 3-4-5 son la elecci\u00f3n ideal para quienes buscan...","precio":449,"stock":102,"imagen":"https://azdentall.com/cdn/shop/files/11_bc030029-1514-4148-861f-7d17e039b364.jpg?v=1704163432&width=1946","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2545275875","activo":true,"destacado":false,"rating":4.8},{"id":"MLM4346432600","nombre":"Brackets Autoligables Azdent Roth 0.022","categoria":"Ortodoncia","descripcion":"Los Brackets Autoligables Azdent Roth 0.022 Con Hooks 3-4-5 son la elecci\u00f3n ideal para quienes busca...","precio":449,"stock":61,"imagen":"https://http2.mlstatic.com/D_994001-MLM97667130589_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4346432600","activo":true,"destacado":true,"rating":4.9},{"id":"MLM4682483172","nombre":"Pack 5 Puntas Escalador Dental Ultras\u00f3nico EMS","categoria":"Ortodoncia","descripcion":"Pack de 5 puntas para escalador dental ultras\u00f3nico. Producto nuevo para uso profesional odont\u00f3logi...","precio":399,"stock":1,"imagen":"https://http2.mlstatic.com/D_601157-MLM105185184867_012026-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4682483172","activo":true,"destacado":true,"rating":4.6},{"id":"3525920430","nombre":"Box Set Demon Slayer De Koyoharu Gotouge Serie Completa De 23 Tomos Panini 2023","categoria":"Libros","descripcion":"Box Set Demon Slayer De Koyoharu...","precio":2999,"stock":0,"imagen":"https://http2.mlstatic.com/D_715053-MLA79713349123_102024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-3525920430","activo":true,"destacado":true,"rating":4.9}];
 
     const navbar=document.getElementById('navbar');
     window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>20));
+    const backToTop = document.getElementById('backToTop');
+    function toggleBackToTop(){
+      if (!backToTop) return;
+      backToTop.style.display = (window.scrollY > 500) ? 'flex' : 'none';
+    }
+    window.addEventListener('scroll', toggleBackToTop);
+    toggleBackToTop();
+    backToTop?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     const menuToggle=document.getElementById('menuToggle'),mobileMenu=document.getElementById('mobileMenu');
     menuToggle.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
     document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>mobileMenu.classList.remove('open')));
@@ -668,47 +754,45 @@
     });
 
     function buildCard(p) {
-    const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
-    const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar ahora';
-  
-    const rating = typeof p.rating === 'number' ? p.rating : 4.7;
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-  
-    let starsHTML = '★'.repeat(fullStars);
-    if (hasHalfStar) starsHTML += '☆';
-    while (starsHTML.length < 5) starsHTML += '☆';
-  
-    // ✅ ya NO muestra (50)
-    const ratingHTML = `
-      <div class="product-rating">
-        <div class="stars">${starsHTML}</div>
-        <div class="rating-text">${rating.toFixed(1)}</div>
-      </div>
-    `;
-  
-    const price = `<div class="product-price">$${Number(p.precio || 0).toLocaleString('es-MX')}</div>`;
-  
-    return `
-      <div class="product-card">
-        <div class="product-img">
-          <span class="product-cat">${p.categoria || ''}</span>
-          ${stockBadge}
-          <img src="${p.imagen}" alt="${(p.nombre || '').replace(/"/g, '&quot;')}" loading="lazy"/>
-        </div>
-        <div class="product-info">
-          ${ratingHTML}
-          <h3 class="product-name">${p.nombre || ''}</h3>
-          <p class="product-desc-short">${p.descripcion || ''}</p>
-          ${price}
-          <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">
-            ${btnText} <span class="ml-badge">ML</span>
-          </a>
-        </div>
-      </div>
-    `;
-  }
+      const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
+      const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar ahora';
 
+      const rating = typeof p.rating === 'number' ? p.rating : 4.7;
+      const fullStars = Math.floor(rating);
+      const hasHalfStar = rating % 1 >= 0.5;
+
+      let starsHTML = '★'.repeat(fullStars);
+      if (hasHalfStar) starsHTML += '☆';
+      while (starsHTML.length < 5) starsHTML += '☆';
+
+      const ratingHTML = `
+        <div class="product-rating">
+          <div class="stars">${starsHTML}</div>
+          <div class="rating-text">${rating.toFixed(1)}</div>
+        </div>
+      `;
+
+      const price = `<div class="product-price">$${Number(p.precio || 0).toLocaleString('es-MX')}</div>`;
+
+      return `
+        <div class="product-card">
+          <div class="product-img">
+            <span class="product-cat">${p.categoria || ''}</span>
+            ${stockBadge}
+            <img src="${p.imagen}" alt="${(p.nombre || '').replace(/"/g, '&quot;')}" loading="lazy"/>
+          </div>
+          <div class="product-info">
+            ${ratingHTML}
+            <h3 class="product-name">${p.nombre || ''}</h3>
+            <p class="product-desc-short">${p.descripcion || ''}</p>
+            ${price}
+            <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">
+              ${btnText} <span class="ml-badge">ML</span>
+            </a>
+          </div>
+        </div>
+      `;
+    }
 
     async function loadProducts() {
       let productos = [];
@@ -719,7 +803,6 @@
         // ignore
       }
 
-      // Fallback: si no se pudo cargar el JSON externo, usa los productos embebidos
       if (!Array.isArray(productos) || productos.length === 0) {
         productos = PRODUCTS_FALLBACK;
       }
