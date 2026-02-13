@@ -1,807 +1,212 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TiendaDigital CDMX — Tienda Online</title>
-  <meta name="description" content="Distribuidores en línea. Encuentra nuestros productos en Mercado Libre." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&display=swap" rel="stylesheet" />
+  <meta name="description" content="Distribuidores en línea. Encuentra nuestros productos en Mercado Libre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&display=swap" rel="stylesheet">
   <style>
-    /* ============================================
-       RESET & BASE
-    ============================================ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --cream:    #F7F4EF;
-      --warm-white: #FDFBF8;
-      --stone:    #E8E2D9;
-      --taupe:    #BFB8AD;
-      --slate:    #7A7470;
-      --charcoal: #2E2A27;
-      --ink:      #1A1614;
-      --accent:   #8B6F5E;
-      --accent-light: #C4A898;
-      --accent-pale: #EDE4DF;
-      --green:    #6B8F71;
-      --ml-yellow:#FFE600;
-
+      --cream: #F7F4EF; --warm-white: #FDFBF8; --stone: #E8E2D9; --taupe: #BFB8AD;
+      --slate: #7A7470; --charcoal: #2E2A27; --ink: #1A1614; --accent: #8B6F5E;
+      --accent-light: #C4A898; --accent-pale: #EDE4DF; --ml-yellow: #FFE600;
       --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'DM Sans', sans-serif;
-
-      --max-w: 1240px;
-      --radius: 12px;
-      --radius-sm: 8px;
-      --shadow: 0 2px 24px rgba(46,42,39,0.08);
+      --font-body: 'DM Sans', sans-serif;
+      --max-w: 1240px; --radius: 12px; --shadow: 0 2px 24px rgba(46,42,39,0.08);
       --shadow-md: 0 8px 40px rgba(46,42,39,0.12);
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--warm-white);
-      color: var(--charcoal);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
+    body { font-family: var(--font-body); background: var(--warm-white); color: var(--charcoal);
+      -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-
-    /* ============================================
-       UTILITIES
-    ============================================ */
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid var(--accent-light);
-      border-radius: 100px;
-      padding: 5px 14px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-body);
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      border-radius: 100px;
-      padding: 12px 28px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      border: none;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: var(--charcoal);
-      color: var(--warm-white);
-    }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+    .tag { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-light);
+      border-radius: 100px; padding: 5px 14px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em; border-radius: 100px; padding: 12px 28px; cursor: pointer;
+      transition: all 0.25s ease; border: none; text-decoration: none; }
+    .btn-primary { background: var(--charcoal); color: var(--warm-white); }
     .btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--charcoal);
-      border: 1.5px solid var(--charcoal);
-    }
+    .btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid var(--charcoal); }
     .btn-outline:hover { background: var(--charcoal); color: var(--warm-white); transform: translateY(-2px); }
-
-    .btn-ml {
-      background: var(--ml-yellow);
-      color: #333;
-      font-weight: 600;
-    }
+    .btn-ml { background: var(--ml-yellow); color: #333; font-weight: 600; }
     .btn-ml:hover { background: #e6cf00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,230,0,0.35); }
 
-    /* ============================================
-       NAVIGATION
-    ============================================ */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(253,251,248,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(191,184,173,0.3);
-      transition: box-shadow 0.3s ease;
-    }
-
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,251,248,0.88);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(191,184,173,0.3); transition: box-shadow 0.3s ease; }
     nav.scrolled { box-shadow: var(--shadow); }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-    }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--ink);
-    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--ink); }
     .nav-logo span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--slate);
-      transition: color 0.2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--slate); transition: color 0.2s; }
     .nav-links a:hover { color: var(--ink); }
-
     .nav-cta { margin-left: 16px; }
-
-    /* Mobile nav toggle */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--charcoal);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 68px; left: 0; right: 0;
-      background: var(--warm-white);
-      border-bottom: 1px solid var(--stone);
-      padding: 24px 32px;
-      z-index: 99;
-    }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 4px; background: none; border: none; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal);
+      border-radius: 2px; transition: all 0.3s ease; }
+    .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--warm-white); border-bottom: 1px solid var(--stone); padding: 24px 32px; z-index: 99; }
     .mobile-menu.open { display: block; }
     .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-    .mobile-menu a {
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: var(--charcoal);
-    }
+    .mobile-menu a { font-size: 1rem; font-weight: 400; letter-spacing: 0.06em; color: var(--charcoal); }
 
-    /* ============================================
-       HERO
-    ============================================ */
-    #hero {
-      padding-top: 68px;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 60% 80% at 80% 50%, var(--accent-pale) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 10% 80%, var(--stone) 0%, transparent 60%);
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 80px 0 80px 0;
-      animation: fadeUp 0.9s ease both;
-    }
-
+    #hero { padding-top: 68px; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--accent-pale) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, var(--stone) 0%, transparent 60%); z-index: 0; }
+    .hero-content { position: relative; z-index: 1; padding: 80px 0; }
     .hero-content .tag { margin-bottom: 28px; }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--slate);
-      max-width: 440px;
-      margin-bottom: 44px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .hero-media {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 16px;
-      padding: 100px 0 80px 40px;
-      animation: fadeUp 1.1s ease 0.15s both;
-    }
-
-    .hero-img-wrap {
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--stone);
-      aspect-ratio: 4/5;
-      position: relative;
-    }
+    .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 24px; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-subtitle { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--slate);
+      max-width: 440px; margin-bottom: 44px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-media { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto; gap: 16px; padding: 100px 0 80px 40px; }
+    .hero-img-wrap { border-radius: var(--radius); overflow: hidden; background: var(--stone);
+      aspect-ratio: 4/5; position: relative; }
     .hero-img-wrap:nth-child(1) { grid-row: 1 / 3; margin-top: 40px; }
     .hero-img-wrap:nth-child(2) { aspect-ratio: 1/1; }
     .hero-img-wrap:nth-child(3) { aspect-ratio: 1/1; }
-
-    .hero-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .hero-img-wrap:hover img { transform: scale(1.04); }
 
-    /* Placeholder image blocks */
-    .img-placeholder {
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--taupe);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      gap: 10px;
-    }
-    .img-placeholder svg { opacity: 0.5; }
-
-    /* ============================================
-       TRUST BAR
-    ============================================ */
-    .trust-bar {
-      background: var(--charcoal);
-      padding: 18px 0;
-      overflow: hidden;
-    }
-
-    .trust-track {
-      display: flex;
-      gap: 64px;
-      animation: scrollTrack 22s linear infinite;
-      white-space: nowrap;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      flex-shrink: 0;
-    }
+    .trust-bar { background: var(--charcoal); padding: 18px 0; overflow: hidden; }
+    .trust-track { display: flex; gap: 64px; animation: scrollTrack 22s linear infinite; white-space: nowrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); flex-shrink: 0; }
     .trust-item span { color: var(--accent-light); }
+    @keyframes scrollTrack { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    @keyframes scrollTrack {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    /* ============================================
-       SECTION SHARED
-    ============================================ */
     section { padding: 100px 0; }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
+    .section-header { text-align: center; margin-bottom: 64px; }
     .section-header .tag { margin-bottom: 16px; }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 3.5vw, 3.6rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 16px;
-    }
+    .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+      font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 16px; }
     .section-title em { font-style: italic; color: var(--accent); }
+    .section-desc { font-size: 0.95rem; line-height: 1.75; color: var(--slate); max-width: 560px; margin: 0 auto; }
 
-    .section-desc {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--slate);
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    /* ============================================
-       FEATURED PRODUCTS PREVIEW (HOME)
-    ============================================ */
-    #featured {
-      background: var(--cream);
-      padding: 100px 0;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    .product-card {
-      background: var(--warm-white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
+    #featured { background: var(--cream); }
+    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .product-card { background: var(--warm-white); border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-
-    .product-img {
-      aspect-ratio: 1/1;
-      background: var(--stone);
-      overflow: hidden;
-      position: relative;
-    }
+    .product-img { aspect-ratio: 1/1; background: var(--stone); overflow: hidden; position: relative; }
     .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
     .product-card:hover .product-img img { transform: scale(1.06); }
-
-    .product-cat {
-      position: absolute;
-      top: 12px; left: 12px;
-      background: rgba(253,251,248,0.9);
-      backdrop-filter: blur(6px);
-      border-radius: 100px;
-      padding: 4px 10px;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .stock-badge {
-      position: absolute;
-      top: 12px; right: 12px;
-      backdrop-filter: blur(6px);
-      border-radius: 100px;
-      padding: 4px 10px;
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-      z-index: 2;
-    }
-    .stock-badge.out {
-      background: rgba(220,38,38,0.92);
-      color: white;
-    }
-
-    .product-info {
-      padding: 18px 20px 20px;
-    }
-
-    .product-name {
-      font-family: var(--font-display);
-      font-size: 1.08rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-
-    .product-desc-short {
-      font-size: 0.78rem;
-      color: var(--taupe);
-      margin-bottom: 16px;
-      line-height: 1.5;
-    }
-
-    .product-buy {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .buy-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: var(--ml-yellow);
-      color: #333;
-      border-radius: 100px;
-      padding: 9px 16px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
+    .product-cat { position: absolute; top: 12px; left: 12px; background: rgba(253,251,248,0.9);
+      backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+    .stock-badge { position: absolute; top: 12px; right: 12px; background: rgba(220,38,38,0.92);
+      color: white; backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px;
+      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; z-index: 2; }
+    .product-info { padding: 18px 20px 20px; }
+    .product-name { font-family: var(--font-display); font-size: 1.08rem; font-weight: 400;
+      color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+    .product-desc-short { font-size: 0.78rem; color: var(--taupe); margin-bottom: 16px; line-height: 1.5; }
+    .buy-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;
+      background: var(--ml-yellow); color: #333; border-radius: 100px; padding: 9px 16px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; transition: all 0.2s ease;
+      border: none; cursor: pointer; text-decoration: none; }
     .buy-btn:hover { background: #e6cf00; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,230,0,0.35); }
-
-    .ml-logo-sm {
-      font-size: 0.6rem;
-      background: var(--ml-yellow);
-      color: #333;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
+    .ml-logo-sm { font-size: 0.6rem; background: var(--ml-yellow); color: #333; padding: 2px 6px;
+      border-radius: 4px; font-weight: 700; letter-spacing: 0.02em; }
     .view-all-wrap { text-align: center; margin-top: 52px; }
 
-    /* ============================================
-       ABOUT
-    ============================================ */
-    #about {
-      background: var(--warm-white);
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-visual {
-      position: relative;
-    }
-
-    .about-main-img {
-      border-radius: var(--radius);
-      overflow: hidden;
-      aspect-ratio: 4/5;
-      background: var(--stone);
-    }
-
-    .about-badge {
-      position: absolute;
-      bottom: -28px;
-      right: -28px;
-      width: 160px;
-      height: 160px;
-      background: var(--charcoal);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      box-shadow: var(--shadow-md);
-    }
-    .about-badge-num {
-      font-family: var(--font-display);
-      font-size: 2.4rem;
-      font-weight: 300;
-      color: var(--warm-white);
-      line-height: 1;
-    }
-    .about-badge-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      margin-top: 4px;
-    }
-
-    .about-content { }
+    #about { background: var(--warm-white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-main-img { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/5; background: var(--stone); }
+    .about-badge { position: absolute; bottom: -28px; right: -28px; width: 160px; height: 160px;
+      background: var(--charcoal); border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; padding: 24px; box-shadow: var(--shadow-md); }
+    .about-badge-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300;
+      color: var(--warm-white); line-height: 1; }
+    .about-badge-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--taupe); margin-top: 4px; }
     .about-content .tag { margin-bottom: 20px; }
-
-    .about-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3vw, 3rem);
-      font-weight: 300;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
+    .about-title { font-family: var(--font-display); font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 24px; }
     .about-title em { font-style: italic; color: var(--accent); }
+    .about-text { font-size: 0.95rem; line-height: 1.8; color: var(--slate); margin-bottom: 20px; }
+    .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 36px 0; }
+    .pillar { background: var(--cream); border-radius: var(--radius); padding: 18px 20px;
+      border-left: 3px solid var(--accent-light); }
+    .pillar-title { font-size: 0.8rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; letter-spacing: 0.04em; }
+    .pillar-text { font-size: 0.75rem; color: var(--slate); line-height: 1.5; }
 
-    .about-text {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--slate);
-      margin-bottom: 20px;
-    }
+    #catalog { background: var(--cream); }
+    .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-    .about-pillars {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 36px 0;
-    }
-
-    .pillar {
-      background: var(--cream);
-      border-radius: var(--radius-sm);
-      padding: 18px 20px;
-      border-left: 3px solid var(--accent-light);
-    }
-    .pillar-title {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 4px;
-      letter-spacing: 0.04em;
-    }
-    .pillar-text {
-      font-size: 0.75rem;
-      color: var(--slate);
-      line-height: 1.5;
-    }
-
-    /* ============================================
-       FULL CATALOG
-    ============================================ */
-    #catalog {
-      background: var(--cream);
-    }
-
-    .filter-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 52px;
-    }
-
-    .filter-btn {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--slate);
-      background: var(--warm-white);
-      border: 1px solid var(--stone);
-      border-radius: 100px;
-      padding: 8px 20px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .filter-btn:hover,
-    .filter-btn.active { background: var(--charcoal); color: var(--warm-white); border-color: var(--charcoal); }
-
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-
-    /* ============================================
-       CONTACT
-    ============================================ */
-    #contact {
-      background: var(--charcoal);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #contact::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(139,111,94,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
+    #contact { background: var(--charcoal); position: relative; overflow: hidden; }
+    #contact::before { content: ''; position: absolute; top: -40%; right: -20%; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(139,111,94,0.15) 0%, transparent 70%); pointer-events: none; }
     #contact .section-header .section-title { color: var(--warm-white); }
     #contact .section-header .section-desc { color: var(--taupe); }
     #contact .section-header .tag { color: var(--accent-light); border-color: rgba(196,168,152,0.35); }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .contact-card {
-      background: rgba(247,244,239,0.06);
-      border: 1px solid rgba(191,184,173,0.15);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-      text-align: center;
-      transition: background 0.25s ease, border-color 0.25s ease;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; margin: 0 auto; }
+    .contact-card { background: rgba(247,244,239,0.06); border: 1px solid rgba(191,184,173,0.15);
+      border-radius: var(--radius); padding: 36px 32px; text-align: center;
+      transition: background 0.25s ease, border-color 0.25s ease; }
     .contact-card:hover { background: rgba(247,244,239,0.1); border-color: rgba(191,184,173,0.3); }
-
-    .contact-icon {
-      width: 52px; height: 52px;
-      background: rgba(139,111,94,0.2);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-    }
+    .contact-icon { width: 52px; height: 52px; background: rgba(139,111,94,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
     .contact-icon svg { color: var(--accent-light); }
+    .contact-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--taupe); margin-bottom: 8px; }
+    .contact-value { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
+      color: var(--warm-white); margin-bottom: 24px; line-height: 1.3; }
 
-    .contact-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      margin-bottom: 8px;
-    }
-    .contact-value {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--warm-white);
-      margin-bottom: 24px;
-      line-height: 1.3;
-    }
-
-    /* ============================================
-       FOOTER
-    ============================================ */
-    footer {
-      background: var(--ink);
-      padding: 40px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--warm-white);
-    }
+    footer { background: var(--ink); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--warm-white); }
     .footer-logo span { color: var(--accent-light); }
-
-    .footer-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .footer-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      transition: color 0.2s;
-    }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--taupe); transition: color 0.2s; }
     .footer-links a:hover { color: var(--warm-white); }
+    .footer-copy { font-size: 0.75rem; color: var(--slate); }
 
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--slate);
-    }
-
-    /* ============================================
-       SCROLL ANIMATIONS
-    ============================================ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* Stagger children */
-    .stagger .reveal:nth-child(1) { transition-delay: 0s; }
-    .stagger .reveal:nth-child(2) { transition-delay: 0.1s; }
-    .stagger .reveal:nth-child(3) { transition-delay: 0.2s; }
-    .stagger .reveal:nth-child(4) { transition-delay: 0.3s; }
-    .stagger .reveal:nth-child(5) { transition-delay: 0.4s; }
-    .stagger .reveal:nth-child(6) { transition-delay: 0.5s; }
-    .stagger .reveal:nth-child(7) { transition-delay: 0.6s; }
-    .stagger .reveal:nth-child(8) { transition-delay: 0.7s; }
-
-    /* ============================================
-       RESPONSIVE
-    ============================================ */
     @media (max-width: 1024px) {
-      .products-grid,
-      .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid, .catalog-grid { grid-template-columns: repeat(2, 1fr); }
       #hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-media { display: none; }
       .hero-content { padding: 60px 0; }
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-visual { max-width: 480px; }
       .about-badge { right: 0; bottom: -24px; width: 130px; height: 130px; }
-      .contact-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .contact-grid { grid-template-columns: 1fr; max-width: 420px; }
     }
-
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       section { padding: 72px 0; }
-
       .nav-links, .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
-
-      .products-grid,
-      .catalog-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-
+      .products-grid, .catalog-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .about-pillars { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
     }
-
     @media (max-width: 480px) {
-      .products-grid,
-      .catalog-grid { grid-template-columns: 1fr; }
+      .products-grid, .catalog-grid { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; }
       .hero-actions .btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ==================== NAV ==================== -->
   <nav id="navbar">
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo">TiendaDigital <span>CDMX</span></a>
@@ -812,17 +217,11 @@
         <li><a href="#catalog">Catálogo</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
-      <!-- Replace href with your Mercado Libre store link -->
-      <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml nav-cta">
-        Ver en MercadoLibre
-      </a>
-      <button class="nav-hamburger" id="menuToggle" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml nav-cta">Ver en MercadoLibre</a>
+      <button class="nav-hamburger" id="menuToggle"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul>
       <li><a href="#hero" class="mobile-link">Inicio</a></li>
@@ -830,131 +229,81 @@
       <li><a href="#about" class="mobile-link">Nosotros</a></li>
       <li><a href="#catalog" class="mobile-link">Catálogo</a></li>
       <li><a href="#contact" class="mobile-link">Contacto</a></li>
-      <li>
-        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">
-          Ver en MercadoLibre
-        </a>
-      </li>
+      <li><a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">Ver en MercadoLibre</a></li>
     </ul>
   </div>
 
-  <!-- ==================== HERO ==================== -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="container" style="display:contents;">
-      <div class="hero-content container" style="max-width:none;padding-left:max(32px, calc((100vw - 1240px)/2 + 32px));">
+      <div class="hero-content container" style="max-width:none;padding-left:max(32px,calc((100vw - 1240px)/2 + 32px));">
         <span class="tag">Distribución en línea ✦ México</span>
-        <h1 class="hero-title">
-          Calidad que<br>
-          <em>inspira</em> confianza
-        </h1>
-        <p class="hero-subtitle">
-          Somos distribuidores en línea con una amplia variedad de productos. Desde suministros ortodónticos hasta libros, juguetes y más — todo disponible en Mercado Libre.
-        </p>
+        <h1 class="hero-title">Calidad que<br><em>inspira</em> confianza</h1>
+        <p class="hero-subtitle">Somos distribuidores en línea con una amplia variedad de productos. Desde suministros ortodónticos hasta libros, juguetes y más — todo disponible en Mercado Libre.</p>
         <div class="hero-actions">
-          <a href="#catalog" class="btn btn-primary">
-            Ver Catálogo
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-outline">
-            Comprar ahora
-          </a>
+          <a href="#catalog" class="btn btn-primary">Ver Catálogo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-outline">Comprar ahora</a>
         </div>
       </div>
-
-      <div class="hero-media" style="padding-right:max(32px, calc((100vw - 1240px)/2 + 32px));">
-        <!-- Replace src with real product images -->
-        <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop" alt="Producto destacado" loading="eager" />
-        </div>
-        <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&auto=format&fit=crop" alt="Libros" loading="eager" />
-        </div>
-        <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&auto=format&fit=crop" alt="Juguetes" loading="eager" />
-        </div>
+      <div class="hero-media" style="padding-right:max(32px,calc((100vw - 1240px)/2 + 32px));">
+        <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop" alt="Producto destacado" loading="eager"/></div>
+        <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&auto=format&fit=crop" alt="Libros" loading="eager"/></div>
+        <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&auto=format&fit=crop" alt="Juguetes" loading="eager"/></div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== TRUST BAR ==================== -->
-  <div class="trust-bar" aria-hidden="true">
+  <div class="trust-bar">
     <div class="trust-track">
-      <!-- duplicated for infinite scroll -->
       <div class="trust-item"><span>✦</span> Envíos seguros</div>
-      <div class="trust-item"><span>✦</span> Pagos protegidos en Mercado Libre</div>
-      <div class="trust-item"><span>✦</span> Amplia variedad de productos</div>
+      <div class="trust-item"><span>✦</span> Pagos protegidos</div>
+      <div class="trust-item"><span>✦</span> Amplia variedad</div>
       <div class="trust-item"><span>✦</span> Vendedores verificados</div>
       <div class="trust-item"><span>✦</span> Atención personalizada</div>
       <div class="trust-item"><span>✦</span> Distribución nacional</div>
       <div class="trust-item"><span>✦</span> Envíos seguros</div>
-      <div class="trust-item"><span>✦</span> Pagos protegidos en Mercado Libre</div>
-      <div class="trust-item"><span>✦</span> Amplia variedad de productos</div>
+      <div class="trust-item"><span>✦</span> Pagos protegidos</div>
+      <div class="trust-item"><span>✦</span> Amplia variedad</div>
       <div class="trust-item"><span>✦</span> Vendedores verificados</div>
       <div class="trust-item"><span>✦</span> Atención personalizada</div>
       <div class="trust-item"><span>✦</span> Distribución nacional</div>
     </div>
   </div>
 
-  <!-- ==================== FEATURED PRODUCTS ==================== -->
   <section id="featured">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header">
         <span class="tag">Productos Destacados</span>
         <h2 class="section-title">Lo más <em>popular</em></h2>
-        <p class="section-desc">Una selección de nuestros productos más solicitados. Haz clic en "Comprar" para ver el listado completo y adquirirlo en Mercado Libre.</p>
+        <p class="section-desc">Una selección de nuestros productos más solicitados. Haz clic en "Comprar" para adquirirlo en Mercado Libre.</p>
       </div>
-
-      <div class="products-grid stagger" id="featuredGrid">
-        <!-- Populated dynamically from productos.json -->
+      <div class="products-grid" id="featuredGrid">
+        <!-- Populated by JavaScript -->
       </div>
-
-      <div class="view-all-wrap reveal">
-        <a href="#catalog" class="btn btn-outline">Ver todo el catálogo</a>
-      </div>
+      <div class="view-all-wrap"><a href="#catalog" class="btn btn-outline">Ver todo el catálogo</a></div>
     </div>
   </section>
 
-  <!-- ==================== ABOUT ==================== -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
-        <div class="about-visual reveal">
-          <div class="about-main-img">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&auto=format&fit=crop" alt="Nuestro negocio" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
-          </div>
+        <div class="about-visual">
+          <div class="about-main-img"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&auto=format&fit=crop" alt="Nuestro negocio" style="width:100%;height:100%;object-fit:cover;"/></div>
           <div class="about-badge">
             <div class="about-badge-num">5+</div>
             <div class="about-badge-label">Años de experiencia</div>
           </div>
         </div>
-
-        <div class="about-content reveal">
+        <div class="about-content">
           <span class="tag">Quiénes somos</span>
           <h2 class="about-title">Distribuidores en línea<br>de <em>confianza</em></h2>
-          <p class="about-text">
-            Somos una empresa mexicana dedicada a la distribución y venta de productos a través de plataformas digitales. Trabajamos para que encuentres todo lo que necesitas con la comodidad de comprar desde casa.
-          </p>
-          <p class="about-text">
-            Nuestra tienda en Mercado Libre garantiza transacciones seguras, envíos protegidos y una atención al cliente que prioriza tu satisfacción. Desde suministros para profesionales hasta artículos de uso cotidiano.
-          </p>
+          <p class="about-text">Somos una empresa mexicana dedicada a la distribución y venta de productos a través de plataformas digitales. Trabajamos para que encuentres todo lo que necesitas con la comodidad de comprar desde casa.</p>
+          <p class="about-text">Nuestra tienda en Mercado Libre garantiza transacciones seguras, envíos protegidos y una atención al cliente que prioriza tu satisfacción. Desde suministros para profesionales hasta artículos de uso cotidiano.</p>
           <div class="about-pillars">
-            <div class="pillar">
-              <div class="pillar-title">Variedad de productos</div>
-              <div class="pillar-text">Múltiples categorías para distintas necesidades.</div>
-            </div>
-            <div class="pillar">
-              <div class="pillar-title">Compra segura</div>
-              <div class="pillar-text">Protección total vía Mercado Libre.</div>
-            </div>
-            <div class="pillar">
-              <div class="pillar-title">Envíos rápidos</div>
-              <div class="pillar-text">Entregamos en toda la República Mexicana.</div>
-            </div>
-            <div class="pillar">
-              <div class="pillar-title">Atención al cliente</div>
-              <div class="pillar-text">Resolvemos tus dudas por correo electrónico.</div>
-            </div>
+            <div class="pillar"><div class="pillar-title">Variedad de productos</div><div class="pillar-text">Múltiples categorías para distintas necesidades.</div></div>
+            <div class="pillar"><div class="pillar-title">Compra segura</div><div class="pillar-text">Protección total vía Mercado Libre.</div></div>
+            <div class="pillar"><div class="pillar-title">Envíos rápidos</div><div class="pillar-text">Entregamos en toda la República Mexicana.</div></div>
+            <div class="pillar"><div class="pillar-title">Atención al cliente</div><div class="pillar-text">Resolvemos tus dudas por correo electrónico.</div></div>
           </div>
           <a href="#contact" class="btn btn-primary" style="margin-top:8px;">Contáctanos</a>
         </div>
@@ -962,74 +311,46 @@
     </div>
   </section>
 
-  <!-- ==================== FULL CATALOG ==================== -->
   <section id="catalog">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header">
         <span class="tag">Catálogo Completo</span>
         <h2 class="section-title">Todos nuestros <em>productos</em></h2>
         <p class="section-desc">Explora nuestra selección completa. Cada producto enlaza directamente a su listado en Mercado Libre.</p>
       </div>
-
-      <div class="filter-bar reveal" id="filterBar">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <!-- Category buttons populated dynamically -->
+      <div class="catalog-grid" id="catalogGrid">
+        <!-- Populated by JavaScript -->
       </div>
-
-      <div class="catalog-grid stagger" id="catalogGrid">
-        <!-- Populated dynamically from productos.json -->
-      </div>
-
-      <div class="view-all-wrap reveal" style="margin-top:52px;">
-        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">
-          Ver toda la tienda en Mercado Libre
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-        </a>
+      <div class="view-all-wrap" style="margin-top:52px;">
+        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">Ver toda la tienda en Mercado Libre <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
       </div>
     </div>
   </section>
 
-  <!-- ==================== CONTACT ==================== -->
   <section id="contact">
     <div class="container">
-      <div class="section-header reveal">
+      <div class="section-header">
         <span class="tag">Contáctanos</span>
         <h2 class="section-title">Estamos <em>para ayudarte</em></h2>
         <p class="section-desc">¿Tienes preguntas sobre algún producto? Escríbenos o visita nuestra tienda en Mercado Libre.</p>
       </div>
-
-      <div class="contact-grid stagger">
-
-        <div class="contact-card reveal">
-          <div class="contact-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div class="contact-label">Correo electrónico</div>
-          <div class="contact-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="41222e2f352022352e013528242f25202528262835202d22252c396f222e2c6f2c39">[email&#160;protected]</a></div>
-          <a href="/cdn-cgi/l/email-protection#64070b0a100507100b24100d010a0005000d030d1005080700091c4a070b094a091c" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">
-            Enviar correo
-          </a>
+          <div class="contact-value">contacto@tiendadigitalcdmx.com.mx</div>
+          <a href="mailto:contacto@tiendadigitalcdmx.com.mx" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">Enviar correo</a>
         </div>
-
-
-
-        <div class="contact-card reveal">
-          <div class="contact-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-          </div>
+        <div class="contact-card">
+          <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
           <div class="contact-label">Nuestra tienda</div>
           <div class="contact-value">Mercado Libre México</div>
-          <!-- Replace with your Mercado Libre store URL -->
-          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">
-            Ir a la tienda
-          </a>
+          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">Ir a la tienda</a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer>
     <div class="container footer-inner">
       <div class="footer-logo">TiendaDigital <span>CDMX</span></div>
@@ -1044,123 +365,65 @@
     </div>
   </footer>
 
-  <!-- ==================== SCRIPTS ==================== -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ── Navbar scroll effect ──
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+  <script>
+    // Navigation
+    const navbar=document.getElementById('navbar');
+    window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>20));
+    const menuToggle=document.getElementById('menuToggle'),mobileMenu=document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>mobileMenu.classList.remove('open')));
 
-    // ── Mobile menu ──
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+    // Static products fallback
+    const staticProducts = [
+      {nombre:"Lego Botanicals Rosas Rosadas",categoria:"Juguetes",descripcion:"Kit de construcción de un ramo creativo.",imagen:"https://http2.mlstatic.com/D_930199-MLA106304190464_022026-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:17,destacado:true,activo:true},
+      {nombre:"Lego Ninjago Mech De Batalla",categoria:"Juguetes",descripcion:"104 piezas. Mundo emocionante de LEGO.",imagen:"https://http2.mlstatic.com/D_704711-MLA99542392082_122025-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:8,destacado:true,activo:true},
+      {nombre:"Lego City Auto Deportivo Rojo",categoria:"Juguetes",descripcion:"109 piezas. Superauto de juguete.",imagen:"https://http2.mlstatic.com/D_806868-MLA99516422572_112025-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:13,destacado:true,activo:true},
+      {nombre:"Dandadan Tomo Panini",categoria:"Libros",descripcion:"Volumen a elegir. Nuevos, en físico.",imagen:"https://mla-s1-p.mlstatic.com/884508-MLM80901598440_122024-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:6,destacado:true,activo:true},
+      {nombre:"Box Set Demon Slayer",categoria:"Libros",descripcion:"Serie completa de 23 tomos Panini 2023.",imagen:"https://http2.mlstatic.com/D_715053-MLA79713349123_102024-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:0,destacado:true,activo:true},
+      {nombre:"5 Kits Brackets Azdent Mini Roth",categoria:"Ortodoncia",descripcion:"Brackets metálicos de alta precisión.",imagen:"https://http2.mlstatic.com/D_970258-MLM97351754491_112025-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:157,destacado:true,activo:true},
+      {nombre:"10 Arcos De Acero Inoxidable",categoria:"Ortodoncia",descripcion:"10 piezas por paquete de alta calidad.",imagen:"https://http2.mlstatic.com/D_812237-MLM99144483937_112025-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:28,destacado:true,activo:true},
+      {nombre:"Brackets Autoligables Azdent",categoria:"Ortodoncia",descripcion:"Elección ideal para profesionales.",imagen:"https://http2.mlstatic.com/D_994001-MLM97667130589_112025-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:61,destacado:true,activo:true},
+      {nombre:"Pack 5 Puntas Escalador Dental",categoria:"Ortodoncia",descripcion:"Producto nuevo para uso profesional.",imagen:"https://http2.mlstatic.com/D_601157-MLM105185184867_012026-I.jpg",link_ml:"https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop",stock:1,destacado:true,activo:true}
+    ];
 
-    // ── Scroll reveal ──
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    function observeReveal() {
-      document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
-    }
-
-    // ── Imagen de respaldo por categoría ──
-    const fallbackImages = {
-      'Ortodoncia': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&auto=format&fit=crop',
-      'Juguetes':   'https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=500&auto=format&fit=crop',
-      'Libros':     'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop',
-      'Moda':       'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500&auto=format&fit=crop',
-      'General':    'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop',
-    };
-
-    // ── Construir tarjeta de producto ──
+    // Build product card
     function buildCard(p) {
-      const img = p.imagen || fallbackImages[p.categoria] || fallbackImages['General'];
-      const catSlug = p.categoria.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      const card = document.createElement('div');
-      card.className = 'product-card reveal';
-      card.dataset.category = catSlug;
-      
-      // Badge de stock
-      const stockBadge = p.stock === 0 ? '<span class="stock-badge out">Agotado</span>' : '';
-      
-      card.innerHTML = `
-        <div class="product-img">
-          <span class="product-cat">${p.categoria}</span>
-          ${stockBadge}
-          <img src="${img}" alt="${p.nombre}" loading="lazy" onerror="this.src='${fallbackImages['General']}'"/>
-        </div>
+      const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
+      const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar';
+      return `<div class="product-card">
+        <div class="product-img"><span class="product-cat">${p.categoria}</span>${stockBadge}<img src="${p.imagen}" alt="${p.nombre}" loading="lazy"/></div>
         <div class="product-info">
           <h3 class="product-name">${p.nombre}</h3>
-          <p class="product-desc-short">${p.descripcion || ''}</p>
-          <div class="product-buy">
-            <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">
-              ${p.stock === 0 ? 'Ver detalles' : 'Comprar'} <span class="ml-logo-sm">ML</span>
-            </a>
-          </div>
-        </div>`;
-      return card;
+          <p class="product-desc-short">${p.descripcion}</p>
+          <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">${btnText} <span class="ml-logo-sm">ML</span></a>
+        </div>
+      </div>`;
     }
 
-    // ── Cargar productos desde productos.json ──
+    // Load products
     async function loadProducts() {
-      let productos = [];
+      let productos = staticProducts;
       try {
         const res = await fetch('productos.json');
-        if (!res.ok) throw new Error('no fetch');
-        productos = await res.json();
+        if (res.ok) {
+          const json = await res.json();
+          productos = json.filter(p => p.activo && p.destacado);
+          console.log('✅ productos.json cargado');
+        }
       } catch(e) {
-        console.warn('No se pudo cargar productos.json:', e);
-        return;
+        console.log('ℹ️ Usando productos estáticos');
       }
-
-      // Solo activos y destacados
-      const activos = productos.filter(p => p.activo);
-      const destacados = activos.filter(p => p.destacado);
-
-      // ── Sección FEATURED (Home): 4 productos más diversos ──
+      
+      // Featured (4 productos)
       const featuredGrid = document.getElementById('featuredGrid');
-      featuredGrid.innerHTML = '';
-      destacados.slice(0, 4).forEach(p => featuredGrid.appendChild(buildCard(p)));
-
-      // ── Sección CATÁLOGO: solo los destacados (8) ──
+      featuredGrid.innerHTML = productos.slice(0,4).map(buildCard).join('');
+      
+      // Catalog (todos los destacados)
       const catalogGrid = document.getElementById('catalogGrid');
-      catalogGrid.innerHTML = '';
-      destacados.forEach(p => catalogGrid.appendChild(buildCard(p)));
+      catalogGrid.innerHTML = productos.map(buildCard).join('');
+    }
 
-      // ── Filtros dinámicos basados en destacados ──
-      const categories = [...new Set(destacados.map(p => p.categoria))].sort();
-      const filterBar = document.getElementById('filterBar');
-      filterBar.innerHTML = '<button class="filter-btn active" data-filter="all">Todos</button>';
-      categories.forEach(cat => {
-        const slug = cat.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.dataset.filter = slug;
-        btn.textContent = cat;
-        filterBar.appendChild(btn);
-      });
-
-      // ── Lógica de filtros ──
-      filterBar.addEventListener('click', e => {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
-        filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('#catalogGrid .product-card').forEach((card, i) => {
-          const match = filter === 'all' || card.dataset.category === filter;
-          card.style.transition = `opacity 0.28s ease ${i * 0.035}s, transform 0.28s ease ${i * 0.035}s`;
-          if (match) {
-            card.style.display = '';
-            requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; });
-          } else {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(10px)';
-            setTimeout(() => { card.style.display = 'none'; }, 300 + i * 35);
-          }
-        });
-      });
+    loadProducts();
+  </script>
+</body>
+</html>
