@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TuMarca — Tienda Online</title>
+  <title>TiendaDigital CDMX — Tienda Online</title>
   <meta name="description" content="Distribuidores en línea. Encuentra nuestros productos en Mercado Libre." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -410,6 +410,23 @@
       font-weight: 500;
     }
 
+    .stock-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      backdrop-filter: blur(6px);
+      border-radius: 100px;
+      padding: 4px 10px;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      z-index: 2;
+    }
+    .stock-badge.out {
+      background: rgba(220,38,38,0.92);
+      color: white;
+    }
+
     .product-info {
       padding: 18px 20px 20px;
     }
@@ -635,8 +652,10 @@
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 24px;
+      max-width: 760px;
+      margin: 0 auto;
     }
 
     .contact-card {
@@ -785,7 +804,7 @@
   <!-- ==================== NAV ==================== -->
   <nav id="navbar">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">Tu<span>Marca</span></a>
+      <a href="#hero" class="nav-logo">TiendaDigital <span>CDMX</span></a>
       <ul class="nav-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#featured">Productos</a></li>
@@ -794,7 +813,7 @@
         <li><a href="#contact">Contacto</a></li>
       </ul>
       <!-- Replace href with your Mercado Libre store link -->
-      <a href="https://www.mercadolibre.com.mx/tienda/TUTIENDA" target="_blank" rel="noopener" class="btn btn-ml nav-cta">
+      <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml nav-cta">
         Ver en MercadoLibre
       </a>
       <button class="nav-hamburger" id="menuToggle" aria-label="Menú">
@@ -812,7 +831,7 @@
       <li><a href="#catalog" class="mobile-link">Catálogo</a></li>
       <li><a href="#contact" class="mobile-link">Contacto</a></li>
       <li>
-        <a href="https://www.mercadolibre.com.mx/tienda/TUTIENDA" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">
+        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">
           Ver en MercadoLibre
         </a>
       </li>
@@ -837,7 +856,7 @@
             Ver Catálogo
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="https://www.mercadolibre.com.mx/tienda/TUTIENDA" target="_blank" rel="noopener" class="btn btn-outline">
+          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-outline">
             Comprar ahora
           </a>
         </div>
@@ -886,80 +905,8 @@
         <p class="section-desc">Una selección de nuestros productos más solicitados. Haz clic en "Comprar" para ver el listado completo y adquirirlo en Mercado Libre.</p>
       </div>
 
-      <div class="products-grid stagger">
-        <!-- PRODUCT 1 — Orthodontic -->
-        <div class="product-card reveal">
-          <div class="product-img">
-            <span class="product-cat">Ortodoncia</span>
-            <!-- Replace with your product image -->
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&auto=format&fit=crop" alt="Brackets ortodónticos" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Brackets Metálicos Slot 022</h3>
-            <p class="product-desc-short">Kit completo para tratamiento ortodóntico profesional.</p>
-            <div class="product-buy">
-              <!-- Replace href with your actual Mercado Libre product URL -->
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000001" target="_blank" rel="noopener" class="buy-btn">
-                <span>Comprar</span>
-                <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRODUCT 2 — Books -->
-        <div class="product-card reveal">
-          <div class="product-img">
-            <span class="product-cat">Libros</span>
-            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop" alt="Libros educativos" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Libros Educativos Infantiles</h3>
-            <p class="product-desc-short">Colección de cuentos y aprendizaje para niños.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000002" target="_blank" rel="noopener" class="buy-btn">
-                <span>Comprar</span>
-                <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRODUCT 3 — Toys -->
-        <div class="product-card reveal">
-          <div class="product-img">
-            <span class="product-cat">Juguetes</span>
-            <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=500&auto=format&fit=crop" alt="Juguetes educativos" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Juego Didáctico STEM</h3>
-            <p class="product-desc-short">Desarrolla creatividad y habilidades lógicas.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000003" target="_blank" rel="noopener" class="buy-btn">
-                <span>Comprar</span>
-                <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PRODUCT 4 — General -->
-        <div class="product-card reveal">
-          <div class="product-img">
-            <span class="product-cat">General</span>
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop" alt="Artículo general" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Artículos de Mercería</h3>
-            <p class="product-desc-short">Variedad de productos para el hogar y uso diario.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000004" target="_blank" rel="noopener" class="buy-btn">
-                <span>Comprar</span>
-                <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="products-grid stagger" id="featuredGrid">
+        <!-- Populated dynamically from productos.json -->
       </div>
 
       <div class="view-all-wrap reveal">
@@ -1006,7 +953,7 @@
             </div>
             <div class="pillar">
               <div class="pillar-title">Atención al cliente</div>
-              <div class="pillar-text">Resolvemos tus dudas por WhatsApp o email.</div>
+              <div class="pillar-text">Resolvemos tus dudas por correo electrónico.</div>
             </div>
           </div>
           <a href="#contact" class="btn btn-primary" style="margin-top:8px;">Contáctanos</a>
@@ -1024,216 +971,17 @@
         <p class="section-desc">Explora nuestra selección completa. Cada producto enlaza directamente a su listado en Mercado Libre.</p>
       </div>
 
-      <div class="filter-bar reveal">
+      <div class="filter-bar reveal" id="filterBar">
         <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="ortodoncia">Ortodoncia</button>
-        <button class="filter-btn" data-filter="libros">Libros</button>
-        <button class="filter-btn" data-filter="juguetes">Juguetes</button>
-        <button class="filter-btn" data-filter="general">General</button>
+        <!-- Category buttons populated dynamically -->
       </div>
 
       <div class="catalog-grid stagger" id="catalogGrid">
-
-        <!-- ── ORTODONCIA ── -->
-        <div class="product-card reveal" data-category="ortodoncia">
-          <div class="product-img">
-            <span class="product-cat">Ortodoncia</span>
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&auto=format&fit=crop" alt="Brackets" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Brackets Metálicos Slot 022</h3>
-            <p class="product-desc-short">Kit de 20 piezas para tratamiento completo.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000001" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="ortodoncia">
-          <div class="product-img">
-            <span class="product-cat">Ortodoncia</span>
-            <img src="https://images.unsplash.com/photo-1588776814546-daab30f310ce?w=500&auto=format&fit=crop" alt="Arcos" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Arcos Niti Redondos</h3>
-            <p class="product-desc-short">Pack de 10 arcos de niquel titanio.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000005" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="ortodoncia">
-          <div class="product-img">
-            <span class="product-cat">Ortodoncia</span>
-            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&auto=format&fit=crop" alt="Ligaduras" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Ligaduras Elásticas Colores</h3>
-            <p class="product-desc-short">Bolsa de 1000 piezas, múltiples colores.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000006" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── LIBROS ── -->
-        <div class="product-card reveal" data-category="libros">
-          <div class="product-img">
-            <span class="product-cat">Libros</span>
-            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop" alt="Libros" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Cuentos Clásicos Infantiles</h3>
-            <p class="product-desc-short">Set de 5 libros ilustrados para niños.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000002" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="libros">
-          <div class="product-img">
-            <span class="product-cat">Libros</span>
-            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=500&auto=format&fit=crop" alt="Libros educativos" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Libro de Actividades Matemáticas</h3>
-            <p class="product-desc-short">Para niños de 6 a 12 años. Nivel básico.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000007" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="libros">
-          <div class="product-img">
-            <span class="product-cat">Libros</span>
-            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500&auto=format&fit=crop" alt="Diccionario" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Diccionario Escolar Ilustrado</h3>
-            <p class="product-desc-short">Edición actualizada con más de 40,000 palabras.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000008" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── JUGUETES ── -->
-        <div class="product-card reveal" data-category="juguetes">
-          <div class="product-img">
-            <span class="product-cat">Juguetes</span>
-            <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=500&auto=format&fit=crop" alt="Juguetes" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Set de Construcción STEM</h3>
-            <p class="product-desc-short">200 piezas para armar estructuras creativas.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000003" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="juguetes">
-          <div class="product-img">
-            <span class="product-cat">Juguetes</span>
-            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&auto=format&fit=crop" alt="Rompecabezas" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Rompecabezas 500 Piezas</h3>
-            <p class="product-desc-short">Imágenes de paisajes mexicanos. Apto +7 años.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000009" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="juguetes">
-          <div class="product-img">
-            <span class="product-cat">Juguetes</span>
-            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=500&auto=format&fit=crop" alt="Arte" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Kit de Arte y Manualidades</h3>
-            <p class="product-desc-short">Colores, pinceles, plastilina y más.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000010" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── GENERAL ── -->
-        <div class="product-card reveal" data-category="general">
-          <div class="product-img">
-            <span class="product-cat">General</span>
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop" alt="Artículos" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Artículos de Papelería</h3>
-            <p class="product-desc-short">Plumas, libretas y accesorios escolares.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000004" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="general">
-          <div class="product-img">
-            <span class="product-cat">General</span>
-            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&auto=format&fit=crop" alt="Hogar" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Organizador para el Hogar</h3>
-            <p class="product-desc-short">Set de 3 cajas organizadoras apilables.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000011" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card reveal" data-category="general">
-          <div class="product-img">
-            <span class="product-cat">General</span>
-            <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&auto=format&fit=crop" alt="Mascarillas" loading="lazy" />
-          </div>
-          <div class="product-info">
-            <h3 class="product-name">Kit de Protección Personal</h3>
-            <p class="product-desc-short">Caja de 50 cubrebocas quirúrgicos.</p>
-            <div class="product-buy">
-              <a href="https://www.mercadolibre.com.mx/p/MLB000000012" target="_blank" rel="noopener" class="buy-btn">
-                Comprar <span class="ml-logo-sm">ML</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /catalog-grid -->
+        <!-- Populated dynamically from productos.json -->
+      </div>
 
       <div class="view-all-wrap reveal" style="margin-top:52px;">
-        <a href="https://www.mercadolibre.com.mx/tienda/TUTIENDA" target="_blank" rel="noopener" class="btn btn-ml">
+        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">
           Ver toda la tienda en Mercado Libre
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
         </a>
@@ -1257,24 +1005,13 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div class="contact-label">Correo electrónico</div>
-          <!-- Replace with your real email -->
-          <div class="contact-value">contacto@tumarca.mx</div>
-          <a href="mailto:contacto@tumarca.mx" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">
+          <div class="contact-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="41222e2f352022352e013528242f25202528262835202d22252c396f222e2c6f2c39">[email&#160;protected]</a></div>
+          <a href="/cdn-cgi/l/email-protection#64070b0a100507100b24100d010a0005000d030d1005080700091c4a070b094a091c" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">
             Enviar correo
           </a>
         </div>
 
-        <div class="contact-card reveal">
-          <div class="contact-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-          </div>
-          <div class="contact-label">WhatsApp</div>
-          <!-- Replace with your real WhatsApp number (country code + number, no spaces) -->
-          <div class="contact-value">+52 55 0000 0000</div>
-          <a href="https://wa.me/5255000000000?text=Hola,%20me%20interesa%20un%20producto" target="_blank" rel="noopener" class="btn" style="background:#25D366;color:#fff;border-radius:100px;padding:12px 28px;font-size:0.82rem;font-weight:500;">
-            Abrir WhatsApp
-          </a>
-        </div>
+
 
         <div class="contact-card reveal">
           <div class="contact-icon">
@@ -1283,7 +1020,7 @@
           <div class="contact-label">Nuestra tienda</div>
           <div class="contact-value">Mercado Libre México</div>
           <!-- Replace with your Mercado Libre store URL -->
-          <a href="https://www.mercadolibre.com.mx/tienda/TUTIENDA" target="_blank" rel="noopener" class="btn btn-ml">
+          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">
             Ir a la tienda
           </a>
         </div>
@@ -1295,7 +1032,7 @@
   <!-- ==================== FOOTER ==================== -->
   <footer>
     <div class="container footer-inner">
-      <div class="footer-logo">Tu<span>Marca</span></div>
+      <div class="footer-logo">TiendaDigital <span>CDMX</span></div>
       <ul class="footer-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#featured">Productos</a></li>
@@ -1303,12 +1040,12 @@
         <li><a href="#catalog">Catálogo</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
-      <div class="footer-copy">© 2025 TuMarca. Todos los derechos reservados.</div>
+      <div class="footer-copy">© 2025 TiendaDigital CDMX. Todos los derechos reservados.</div>
     </div>
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Navbar scroll effect ──
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -1318,53 +1055,112 @@
     // ── Mobile menu ──
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    });
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
     // ── Scroll reveal ──
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    function observeReveal() {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+    }
+
+    // ── Imagen de respaldo por categoría ──
+    const fallbackImages = {
+      'Ortodoncia': 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&auto=format&fit=crop',
+      'Juguetes':   'https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=500&auto=format&fit=crop',
+      'Libros':     'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&auto=format&fit=crop',
+      'Moda':       'https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500&auto=format&fit=crop',
+      'General':    'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop',
+    };
+
+    // ── Construir tarjeta de producto ──
+    function buildCard(p) {
+      const img = p.imagen || fallbackImages[p.categoria] || fallbackImages['General'];
+      const catSlug = p.categoria.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const card = document.createElement('div');
+      card.className = 'product-card reveal';
+      card.dataset.category = catSlug;
+      
+      // Badge de stock
+      const stockBadge = p.stock === 0 ? '<span class="stock-badge out">Agotado</span>' : '';
+      
+      card.innerHTML = `
+        <div class="product-img">
+          <span class="product-cat">${p.categoria}</span>
+          ${stockBadge}
+          <img src="${img}" alt="${p.nombre}" loading="lazy" onerror="this.src='${fallbackImages['General']}'"/>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${p.nombre}</h3>
+          <p class="product-desc-short">${p.descripcion || ''}</p>
+          <div class="product-buy">
+            <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">
+              ${p.stock === 0 ? 'Ver detalles' : 'Comprar'} <span class="ml-logo-sm">ML</span>
+            </a>
+          </div>
+        </div>`;
+      return card;
+    }
+
+    // ── Cargar productos desde productos.json ──
+    async function loadProducts() {
+      let productos = [];
+      try {
+        const res = await fetch('productos.json');
+        if (!res.ok) throw new Error('no fetch');
+        productos = await res.json();
+      } catch(e) {
+        console.warn('No se pudo cargar productos.json:', e);
+        return;
+      }
+
+      // Solo activos y destacados
+      const activos = productos.filter(p => p.activo);
+      const destacados = activos.filter(p => p.destacado);
+
+      // ── Sección FEATURED (Home): 4 productos más diversos ──
+      const featuredGrid = document.getElementById('featuredGrid');
+      featuredGrid.innerHTML = '';
+      destacados.slice(0, 4).forEach(p => featuredGrid.appendChild(buildCard(p)));
+
+      // ── Sección CATÁLOGO: solo los destacados (8) ──
+      const catalogGrid = document.getElementById('catalogGrid');
+      catalogGrid.innerHTML = '';
+      destacados.forEach(p => catalogGrid.appendChild(buildCard(p)));
+
+      // ── Filtros dinámicos basados en destacados ──
+      const categories = [...new Set(destacados.map(p => p.categoria))].sort();
+      const filterBar = document.getElementById('filterBar');
+      filterBar.innerHTML = '<button class="filter-btn active" data-filter="all">Todos</button>';
+      categories.forEach(cat => {
+        const slug = cat.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.dataset.filter = slug;
+        btn.textContent = cat;
+        filterBar.appendChild(btn);
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // ── Catalog filter ──
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const catalogCards = document.querySelectorAll('#catalogGrid .product-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+      // ── Lógica de filtros ──
+      filterBar.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filter = btn.dataset.filter;
-
-        catalogCards.forEach((card, i) => {
+        document.querySelectorAll('#catalogGrid .product-card').forEach((card, i) => {
           const match = filter === 'all' || card.dataset.category === filter;
-          card.style.transition = `opacity 0.3s ease ${i * 0.04}s, transform 0.3s ease ${i * 0.04}s`;
+          card.style.transition = `opacity 0.28s ease ${i * 0.035}s, transform 0.28s ease ${i * 0.035}s`;
           if (match) {
             card.style.display = '';
-            requestAnimationFrame(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
+            requestAnimationFrame(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; });
           } else {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(12px)';
-            setTimeout(() => { if(btn.classList.contains('active') || filter !== 'all') card.style.display = match ? '' : 'none'; }, 300 + i * 40);
+            card.style.transform = 'translateY(10px)';
+            setTimeout(() => { card.style.display = 'none'; }, 300 + i * 35);
           }
         });
       });
-    });
-  </script>
-</body>
-</html>
