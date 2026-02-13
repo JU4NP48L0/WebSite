@@ -207,16 +207,48 @@
     .about-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800;
       line-height: 1.2; color: var(--text-primary); margin-bottom: 20px;
       letter-spacing: -0.02em; }
-    .about-title .highlight { color: var(--accent-light); }
-    .about-text { font-size: 1rem; line-height: 1.7; color: var(--text-secondary);
-      margin-bottom: 16px; }
-    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
-    .feature-item { background: white; border-radius: var(--radius-sm); padding: 20px;
-      border: 1px solid var(--border); }
-    .feature-title { font-size: 0.95rem; font-weight: 700; color: var(--text-primary);
-      margin-bottom: 6px; }
-    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+    .about-title .highlight { 
+      color: var(--accent-light);
+    }
 
+    .about-text { 
+      font-size: 1rem; 
+      line-height: 1.7; 
+      color: var(--text-secondary);
+      margin-bottom: 16px; 
+    }
+    .about-features { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 16px; 
+      margin: 28px 0; 
+    }
+    .feature-item { 
+      background: white; 
+      border-radius: var(--radius-sm); 
+      padding: 20px;
+      border: 1px solid var(--border); 
+      transition: all 0.25s ease;
+    }
+    /* 👇 ICONO */
+    .feature-icon{
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-accent);
+      border-radius: 8px;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    } 
+    /* 👇 TITULO */
+    .feature-title { 
+      font-size: 0.95rem; 
+      font-weight: 700; 
+      color: var(--text-primary);
+      margin-bott
+      
     #catalog { background: white; }
     .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
 
@@ -469,7 +501,7 @@
       <div class="about-grid">
         <div class="about-visual">
           <div class="about-img">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&auto=format&fit=crop" alt="Tienda" loading="lazy"/>
+            <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Entrega segura y compra confiable" loading="lazy"/>
           </div>
           <div class="about-stat">
             <div class="about-stat-num">5+</div>
@@ -483,20 +515,24 @@
           <p class="about-text">Trabajamos d&iacute;a a d&iacute;a para mantener altos est&aacute;ndares de servicio, env&iacute;os seguros y atenci&oacute;n personalizada para cada uno de nuestros clientes.</p>
           <div class="about-features">
             <div class="feature-item">
-              <div class="feature-title">Amplia Selecci&oacute;n</div>
-              <div class="feature-desc">Diversas categor&iacute;as</div>
+              <div class="feature-icon">🛡️</div>
+              <div class="feature-title">Compra protegida</div>
+              <div class="feature-desc">Pago seguro a través de Mercado Libre</div>
+            </div>     
+            <div class="feature-item">
+              <div class="feature-icon">🚚</div>
+              <div class="feature-title">Envíos con seguimiento</div>
+              <div class="feature-desc">Rastreo y entrega segura en todo México</div>
+            </div>          
+            <div class="feature-item">
+              <div class="feature-icon">📦</div>
+              <div class="feature-title">Empaque cuidadoso</div>
+              <div class="feature-desc">Protección adecuada para que llegue perfecto</div>
             </div>
             <div class="feature-item">
-              <div class="feature-title">Env&iacute;o Seguro</div>
-              <div class="feature-desc">Empaque cuidadoso</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-title">Atenci&oacute;n R&aacute;pida</div>
-              <div class="feature-desc">Respuesta en 24h</div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-title">Facturaci&oacute;n</div>
-              <div class="feature-desc">RFC disponible</div>
+              <div class="feature-icon">🧾</div>
+              <div class="feature-title">Factura y soporte</div>
+              <div class="feature-desc">Atención rápida + facturación disponible</div>
             </div>
           </div>
           <a href="#contact" class="btn btn-primary">Cont&aacute;ctanos</a>
