@@ -1,239 +1,408 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TiendaDigital CDMX — Tienda Online</title>
-  <meta name="description" content="Empresa mexicana de venta y distribución online. Encuentra nuestros productos en Mercado Libre.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <meta name="description" content="Empresa mexicana de venta y distribución online. Compra segura a través de Mercado Libre." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --cream: #F7F4EF; --warm-white: #FDFBF8; --stone: #E8E2D9; --taupe: #BFB8AD;
-      --slate: #7A7470; --charcoal: #2E2A27; --ink: #1A1614; --accent: #8B6F5E;
-      --accent-light: #C4A898; --accent-pale: #EDE4DF; --ml-yellow: #FFE600;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#FDFBF8;
+      --panel:#FFFFFF;
+      --muted:#6C6865;
+      --text:#1A1614;
+      --border:rgba(26,22,20,.08);
+      --shadow:0 10px 30px rgba(26,22,20,.07);
+      --shadow2:0 18px 45px rgba(26,22,20,.10);
+      --radius:14px;
+      --maxw:1240px;
 
-      --ml-green: #00A650;
-      --ml-green-soft: rgba(0,166,80,0.18);
+      --accent:#2E2A27;
+      --accent2:#8B6F5E;
 
-      --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'DM Sans', sans-serif;
-      --max-w: 1240px; --radius: 12px; --shadow: 0 2px 24px rgba(46,42,39,0.08);
-      --shadow-md: 0 8px 40px rgba(46,42,39,0.12);
+      --ml-yellow:#FFE600;
+      --ml-yellow-hover:#e6cf00;
+      --ml-green:#00A650;
+      --ml-green-soft:rgba(0,166,80,.15);
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); background: var(--warm-white); color: var(--charcoal);
-      -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
-    .tag { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent-light);
-      border-radius: 100px; padding: 5px 14px; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 500;
-      letter-spacing: 0.06em; border-radius: 100px; padding: 12px 28px; cursor: pointer;
-      transition: all 0.25s ease; border: none; text-decoration: none; }
-    .btn-primary { background: var(--charcoal); color: var(--warm-white); }
-    .btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    .btn-outline { background: transparent; color: var(--charcoal); border: 1.5px solid var(--charcoal); }
-    .btn-outline:hover { background: var(--charcoal); color: var(--warm-white); transform: translateY(-2px); }
-    .btn-ml { background: var(--ml-yellow); color: #333; font-weight: 600; }
-    .btn-ml:hover { background: #e6cf00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,230,0,0.35); }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,251,248,0.88);
-      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(191,184,173,0.3); transition: box-shadow 0.3s ease; }
-    nav.scrolled { box-shadow: var(--shadow); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .nav-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600;
-      letter-spacing: 0.04em; color: var(--ink); }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--slate); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--ink); }
-    .nav-cta { margin-left: 16px; }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer;
-      padding: 4px; background: none; border: none; }
-    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--charcoal);
-      border-radius: 2px; transition: all 0.3s ease; }
-    .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0;
-      background: var(--warm-white); border-bottom: 1px solid var(--stone); padding: 24px 32px; z-index: 99; }
-    .mobile-menu.open { display: block; }
-    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-    .mobile-menu a { font-size: 1rem; font-weight: 400; letter-spacing: 0.06em; color: var(--charcoal); }
-
-    #hero { padding-top: 68px; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 80% 50%, var(--accent-pale) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, var(--stone) 0%, transparent 60%); z-index: 0; }
-    .hero-content { position: relative; z-index: 1; padding: 80px 0; }
-    .hero-content .tag { margin-bottom: 28px; }
-    .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 24px; }
-    .hero-title em { font-style: italic; color: var(--accent); }
-    .hero-subtitle { font-size: 1rem; font-weight: 300; line-height: 1.7; color: var(--slate);
-      max-width: 520px; margin-bottom: 44px; }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .hero-media { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto; gap: 16px; padding: 100px 0 80px 40px; }
-    .hero-img-wrap { border-radius: var(--radius); overflow: hidden; background: var(--stone);
-      aspect-ratio: 4/5; position: relative; }
-    .hero-img-wrap:nth-child(1) { grid-row: 1 / 3; margin-top: 40px; }
-    .hero-img-wrap:nth-child(2) { aspect-ratio: 1/1; }
-    .hero-img-wrap:nth-child(3) { aspect-ratio: 1/1; }
-    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .hero-img-wrap:hover img { transform: scale(1.04); }
-
-    /* STATS BAR (3 items: ventas, seguridad ML, experiencia) */
-    .stats-bar { background: var(--charcoal); padding: 44px 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: center; }
-    .stat-item { text-align: center; }
-    .stat-number { font-family: var(--font-display); font-size: 2.6rem; font-weight: 400;
-      color: var(--ml-yellow); line-height: 1; margin-bottom: 8px; }
-    .stat-label { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--taupe); }
-    .stat-sub { font-size: 0.75rem; color: rgba(191,184,173,0.9); margin-top: 6px; line-height: 1.4; }
-
-    /* Nuevo “reputación” más confiable: seguridad + operación ML (sin pedir que consulten perfil) */
-    .ml-trust { max-width: 260px; margin: 0 auto 10px; }
-    .ml-trust-pill {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 14px; border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
     }
-    .ml-trust-icon {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: var(--ml-green-soft);
-      display: flex; align-items: center; justify-content: center;
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 20px;border-radius:999px;
+      font-weight:700;font-size:.92rem;letter-spacing:.01em;
+      border:1px solid transparent;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
     }
-    .ml-trust-icon svg { width: 18px; height: 18px; color: var(--ml-green); }
-    .ml-trust-text { text-align: left; }
-    .ml-trust-title { font-size: 0.82rem; font-weight: 700; color: var(--warm-white); line-height: 1.1; }
-    .ml-trust-desc { font-size: 0.72rem; color: rgba(191,184,173,0.95); margin-top: 2px; line-height: 1.25; }
+    .btn:active{transform:translateY(0)}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow2);background:#141210}
+    .btn-outline{background:transparent;border-color:rgba(26,22,20,.18);color:var(--text)}
+    .btn-outline:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:rgba(26,22,20,.30)}
+    .btn-ml{background:var(--ml-yellow);color:#2b2b2b;border-color:rgba(0,0,0,.10)}
+    .btn-ml:hover{background:var(--ml-yellow-hover);transform:translateY(-2px);box-shadow:0 14px 30px rgba(255,230,0,.22)}
 
-    /* TRUST BADGES */
-    .trust-section { background: var(--warm-white); padding: 56px 0; }
-    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .trust-badge { background: var(--cream); border-radius: var(--radius); padding: 28px 24px;
-      text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .trust-badge:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .trust-icon { width: 56px; height: 56px; background: var(--accent-pale); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-    .trust-icon svg { color: var(--accent); width: 24px; height: 24px; }
-    .trust-title { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-    .trust-desc { font-size: 0.75rem; color: var(--slate); line-height: 1.5; }
+    /* Nav */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(253,251,248,.86);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(26,22,20,.06);
+    }
+    nav.scrolled{box-shadow:0 8px 24px rgba(26,22,20,.08)}
+    .nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{
+      font-weight:900;letter-spacing:.02em;
+      font-size:1.1rem;
+      display:flex;align-items:baseline;gap:8px;
+    }
+    .brand span{color:var(--accent2)}
+    .nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+    .nav-links a{
+      font-size:.86rem;
+      font-weight:600;
+      color:rgba(26,22,20,.72);
+      transition:color .15s ease;
+    }
+    .nav-links a:hover{color:rgba(26,22,20,.95)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+    .nav-hamburger span{width:24px;height:2px;background:rgba(26,22,20,.85);border-radius:2px}
+    .mobile-menu{
+      display:none;position:fixed;top:68px;left:0;right:0;z-index:99;
+      background:var(--bg);border-bottom:1px solid rgba(26,22,20,.06);
+      padding:18px 28px;
+    }
+    .mobile-menu.open{display:block}
+    .mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+    .mobile-menu a{font-weight:700}
 
-    section { padding: 100px 0; }
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-header .tag { margin-bottom: 16px; }
-    .section-title { font-family: var(--font-display); font-size: clamp(2.2rem, 3.5vw, 3.6rem);
-      font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 16px; }
-    .section-title em { font-style: italic; color: var(--accent); }
-    .section-desc { font-size: 0.95rem; line-height: 1.75; color: var(--slate); max-width: 560px; margin: 0 auto; }
+    /* Hero */
+    #hero{
+      padding-top:68px;
+      min-height:92vh;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:36px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;inset:0;z-index:0;
+      background:
+        radial-gradient(ellipse 55% 65% at 78% 40%, rgba(139,111,94,.14) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 70% at 12% 78%, rgba(0,0,0,.04) 0%, transparent 60%);
+    }
+    .hero-left,.hero-right{position:relative;z-index:1}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(26,22,20,.10);
+      background:rgba(255,255,255,.70);
+      font-weight:800;
+      font-size:.78rem;
+      color:rgba(26,22,20,.78);
+      margin-bottom:16px;
+    }
+    .hero-title{
+      font-size:clamp(2.2rem, 4vw, 3.6rem);
+      line-height:1.05;
+      letter-spacing:-.02em;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+    .hero-subtitle{
+      font-size:1.02rem;
+      line-height:1.7;
+      color:rgba(26,22,20,.72);
+      max-width:640px;
+      margin-bottom:22px;
+    }
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
 
-    #featured { background: var(--cream); }
-    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .product-card { background: var(--warm-white); border-radius: var(--radius); overflow: hidden;
-      box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-    .product-img { aspect-ratio: 1/1; background: var(--stone); overflow: hidden; position: relative; }
-    .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .product-card:hover .product-img img { transform: scale(1.06); }
-    .product-cat { position: absolute; top: 12px; left: 12px; background: rgba(253,251,248,0.9);
-      backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px; font-size: 0.65rem;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
-    .stock-badge { position: absolute; top: 12px; right: 12px; background: rgba(220,38,38,0.92);
-      color: white; backdrop-filter: blur(6px); border-radius: 100px; padding: 4px 10px;
-      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; z-index: 2; }
+    .hero-badges{
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 12px;border-radius:12px;
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(26,22,20,.08);
+    }
+    .badge svg{width:18px;height:18px;color:var(--accent2)}
+    .badge span{font-size:.86rem;font-weight:800;color:rgba(26,22,20,.82)}
 
-    /* Estrellas por producto (si hay rating) */
-    .product-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-    .stars { display: inline-flex; gap: 2px; letter-spacing: 1px; font-size: 0.9rem; }
-    .star-full { color: #FFA500; }
-    .star-empty { color: rgba(122,116,112,0.35); }
-    .rating-text { font-size: 0.72rem; color: var(--slate); }
+    .hero-cards{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      align-content:center;
+    }
+    .hero-card{
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      border:1px solid rgba(26,22,20,.07);
+      box-shadow:0 10px 25px rgba(26,22,20,.06);
+      aspect-ratio:1/1;
+      position:relative;
+    }
+    .hero-card.big{grid-row:1 / span 2;aspect-ratio:4/5}
+    .hero-card img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .hero-card:hover img{transform:scale(1.04)}
 
-    .product-info { padding: 18px 20px 20px; }
-    .product-name { font-family: var(--font-display); font-size: 1.08rem; font-weight: 400;
-      color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
-    .product-desc-short { font-size: 0.78rem; color: var(--taupe); margin-bottom: 12px; line-height: 1.5; }
-    .product-price { font-size: 1.3rem; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
-    .buy-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;
-      background: var(--ml-yellow); color: #333; border-radius: 100px; padding: 9px 16px;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; transition: all 0.2s ease;
-      border: none; cursor: pointer; text-decoration: none; }
-    .buy-btn:hover { background: #e6cf00; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,230,0,0.35); }
-    .ml-logo-sm { font-size: 0.6rem; background: var(--ml-yellow); color: #333; padding: 2px 6px;
-      border-radius: 4px; font-weight: 700; letter-spacing: 0.02em; }
-    .view-all-wrap { text-align: center; margin-top: 52px; }
+    /* Stats */
+    .stats{
+      background:var(--accent);
+      color:#fff;
+      padding:26px 0;
+    }
+    .stats-grid{
+      display:grid;
+      grid-template-columns:1fr 1.2fr 1fr;
+      gap:18px;
+      align-items:center;
+    }
+    .stat{
+      text-align:center;
+      border-radius:16px;
+      padding:14px 14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .stat .num{
+      font-size:2rem;
+      font-weight:900;
+      letter-spacing:-.02em;
+      color:var(--ml-yellow);
+      line-height:1;
+      margin-bottom:6px;
+    }
+    .stat .lbl{
+      font-size:.82rem;
+      font-weight:800;
+      color:rgba(255,255,255,.78);
+      letter-spacing:.02em;
+    }
+    .trust-pill{
+      display:flex;align-items:center;justify-content:center;gap:12px;
+      padding:16px 14px;border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .trust-icon{
+      width:42px;height:42px;border-radius:50%;
+      background:var(--ml-green-soft);
+      display:flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+    }
+    .trust-icon svg{width:20px;height:20px;color:var(--ml-green)}
+    .trust-text{display:flex;flex-direction:column;gap:2px}
+    .trust-text strong{font-size:.95rem;font-weight:900}
+    .trust-text small{font-size:.8rem;color:rgba(255,255,255,.75);line-height:1.3}
 
-    #catalog { background: var(--cream); }
-    .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    /* Sections */
+    section{padding:84px 0}
+    .section-header{
+      max-width:980px;
+      margin:0 auto 34px;
+      text-align:left;
+    }
+    .kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.78rem;font-weight:900;letter-spacing:.06em;
+      text-transform:uppercase;color:rgba(26,22,20,.60);
+      margin-bottom:10px;
+    }
+    .section-title{
+      font-size:clamp(1.8rem, 2.8vw, 2.5rem);
+      font-weight:900;
+      letter-spacing:-.02em;
+      margin-bottom:10px;
+    }
+    .section-desc{
+      font-size:.98rem;
+      line-height:1.7;
+      color:rgba(26,22,20,.70);
+      max-width:720px;
+    }
+
+    /* Trust badges row */
+    .trust-row{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:22px;
+    }
+    .trust-card{
+      background:#fff;
+      border:1px solid rgba(26,22,20,.07);
+      border-radius:var(--radius);
+      padding:18px 16px;
+      box-shadow:0 10px 24px rgba(26,22,20,.05);
+    }
+    .trust-card .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .trust-card .ico{
+      width:44px;height:44px;border-radius:12px;
+      background:rgba(139,111,94,.12);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .trust-card .ico svg{width:22px;height:22px;color:var(--accent2)}
+    .trust-card .t{font-weight:900}
+    .trust-card .d{font-size:.88rem;color:rgba(26,22,20,.70);line-height:1.55}
+
+    /* Products */
+    #featured{background:rgba(0,0,0,.02)}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid rgba(26,22,20,.07);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 12px 28px rgba(26,22,20,.06);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(26,22,20,.10)}
+    .thumb{
+      aspect-ratio:1/1;
+      background:rgba(0,0,0,.03);
+      position:relative;
+      overflow:hidden;
+    }
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .card:hover .thumb img{transform:scale(1.05)}
+    .chip{
+      position:absolute;top:12px;left:12px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(255,255,255,.90);
+      border:1px solid rgba(26,22,20,.08);
+      font-size:.72rem;font-weight:900;color:rgba(26,22,20,.80);
+    }
+    .soldout{
+      position:absolute;top:12px;right:12px;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(220,38,38,.92);
+      color:#fff;
+      font-size:.72rem;font-weight:900;
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .info{padding:14px 14px 16px}
+    .name{font-weight:900;font-size:1rem;line-height:1.25;margin-bottom:6px}
+    .desc{font-size:.86rem;color:rgba(26,22,20,.68);line-height:1.5;margin-bottom:10px}
+    .price{font-size:1.2rem;font-weight:900;margin-bottom:10px}
+    .buy{
+      width:100%;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      padding:11px 14px;border-radius:999px;
+      background:var(--ml-yellow);
+      border:1px solid rgba(0,0,0,.10);
+      font-weight:900;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .buy:hover{background:var(--ml-yellow-hover);transform:translateY(-1px);box-shadow:0 12px 26px rgba(255,230,0,.22)}
+    .ml-tag{font-size:.7rem;font-weight:900;background:rgba(0,0,0,.06);padding:2px 6px;border-radius:6px}
+
+    /* Rating */
+    .rating{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .stars{display:inline-flex;gap:2px;font-size:.95rem;letter-spacing:.02em}
+    .star-full{color:#FFA500}
+    .star-empty{color:rgba(26,22,20,.18)}
+    .rtext{font-size:.78rem;color:rgba(26,22,20,.62);font-weight:700}
 
     /* FAQ */
-    #faq { background: var(--cream); }
-    .faq-wrap { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
-    details.faq-item { background: var(--warm-white); border: 1px solid rgba(191,184,173,0.35);
-      border-radius: var(--radius); padding: 18px 18px; box-shadow: 0 1px 10px rgba(46,42,39,0.04); }
-    details.faq-item summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; font-weight: 600; color: var(--ink); }
-    details.faq-item summary::-webkit-details-marker { display: none; }
-    .faq-q { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; }
-    .faq-plus { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-pale); display: flex; align-items: center; justify-content: center; color: var(--accent); flex: 0 0 auto; }
-    details[open] .faq-plus { transform: rotate(45deg); transition: transform .2s ease; }
-    .faq-a { color: var(--slate); line-height: 1.7; margin-top: 10px; font-size: 0.92rem; }
-
-    #contact { background: var(--charcoal); position: relative; overflow: hidden; }
-    #contact .section-header .section-title { color: var(--warm-white); }
-    #contact .section-header .section-desc { color: var(--taupe); }
-    #contact .section-header .tag { color: var(--accent-light); border-color: rgba(196,168,152,0.35); }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; margin: 0 auto; }
-    .contact-card { background: rgba(247,244,239,0.06); border: 1px solid rgba(191,184,173,0.15);
-      border-radius: var(--radius); padding: 36px 32px; text-align: center; }
-    .contact-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--taupe); margin-bottom: 8px; }
-    .contact-value { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400;
-      color: var(--warm-white); margin-bottom: 24px; line-height: 1.3; }
-
-    footer { background: var(--ink); padding: 40px 0; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .footer-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--warm-white); }
-    .footer-logo span { color: var(--accent-light); }
-    .footer-links { display: flex; gap: 28px; list-style: none; }
-    .footer-links a { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--taupe); transition: color 0.2s; }
-    .footer-links a:hover { color: var(--warm-white); }
-    .footer-copy { font-size: 0.75rem; color: var(--slate); }
-
-    @media (max-width: 1024px) {
-      .products-grid, .catalog-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats-grid, .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-media { display: none; }
-      .hero-content { padding: 60px 0; }
-      .contact-grid { grid-template-columns: 1fr; max-width: 420px; }
+    #faq{background:rgba(0,0,0,.02)}
+    .faq-wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+    details.faq{
+      background:#fff;border:1px solid rgba(26,22,20,.07);
+      border-radius:var(--radius);
+      padding:16px 16px;
+      box-shadow:0 10px 24px rgba(26,22,20,.05);
     }
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      section { padding: 72px 0; }
-      .nav-links, .nav-cta { display: none; }
-      .nav-hamburger { display: flex; }
-      .products-grid, .catalog-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-      .stats-grid, .trust-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-links { flex-wrap: wrap; justify-content: center; }
+    details.faq summary{
+      list-style:none;cursor:pointer;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      font-weight:900;
     }
-    @media (max-width: 480px) {
-      .products-grid, .catalog-grid { grid-template-columns: 1fr; }
-      .stats-grid, .trust-grid { grid-template-columns: 1fr; }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
+    details.faq summary::-webkit-details-marker{display:none}
+    .plus{
+      width:34px;height:34px;border-radius:10px;
+      background:rgba(139,111,94,.12);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;color:var(--accent2);
+      transition:transform .18s ease;
+      flex:0 0 auto;
+    }
+    details[open] .plus{transform:rotate(45deg)}
+    .ans{margin-top:10px;color:rgba(26,22,20,.70);line-height:1.7}
+
+    /* Contact */
+    #contact{background:var(--accent);color:#fff}
+    #contact .section-desc{color:rgba(255,255,255,.75)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px;margin:0 auto}
+    .contact-card{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      padding:22px 18px;
+    }
+    .contact-card .lbl{font-size:.78rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.70);margin-bottom:8px}
+    .contact-card .val{font-size:1.05rem;font-weight:900;margin-bottom:12px}
+    .contact-card .btn{width:100%}
+
+    footer{background:#141210;color:rgba(255,255,255,.75);padding:34px 0}
+    .foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .foot .brand{color:#fff}
+    .foot-links{display:flex;gap:18px;list-style:none}
+    .foot-links a{font-weight:800;font-size:.82rem;color:rgba(255,255,255,.75)}
+    .foot-links a:hover{color:#fff}
+
+    /* Responsive */
+    @media (max-width:1024px){
+      #hero{grid-template-columns:1fr;min-height:auto;padding-bottom:26px}
+      .hero-right{display:none}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .trust-row{grid-template-columns:repeat(2,1fr)}
+      .stats-grid{grid-template-columns:1fr;gap:12px}
+      .section-header{text-align:center}
+      .section-desc{margin:0 auto}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:768px){
+      .container{padding:0 18px}
+      .nav-links,.nav-cta{display:none}
+      .nav-hamburger{display:flex}
+      section{padding:64px 0}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:480px){
+      .grid{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{width:100%}
     }
   </style>
 </head>
@@ -241,7 +410,8 @@
 <body>
   <nav id="navbar">
     <div class="container nav-inner">
-      <a href="#hero" class="nav-logo">TIENDADIGITAL <span>CDMX</span></a>
+      <a class="brand" href="#hero">TIENDADIGITAL <span>CDMX</span></a>
+
       <ul class="nav-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#featured">Productos</a></li>
@@ -249,21 +419,27 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
-      <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml nav-cta">Ver en MercadoLibre</a>
-      <button class="nav-hamburger" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+
+      <a class="btn btn-ml nav-cta" href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener">
+        Ver en Mercado Libre
+      </a>
+
+      <button class="nav-hamburger" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
     <ul>
-      <li><a href="#hero" class="mobile-link">Inicio</a></li>
-      <li><a href="#featured" class="mobile-link">Productos</a></li>
-      <li><a href="#catalog" class="mobile-link">Catálogo</a></li>
-      <li><a href="#faq" class="mobile-link">FAQ</a></li>
-      <li><a href="#contact" class="mobile-link">Contacto</a></li>
+      <li><a class="mobile-link" href="#hero">Inicio</a></li>
+      <li><a class="mobile-link" href="#featured">Productos</a></li>
+      <li><a class="mobile-link" href="#catalog">Catálogo</a></li>
+      <li><a class="mobile-link" href="#faq">FAQ</a></li>
+      <li><a class="mobile-link" href="#contact">Contacto</a></li>
       <li>
-        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml" style="width:100%;justify-content:center;margin-top:8px;">
-          Ver en MercadoLibre
+        <a class="btn btn-ml" style="width:100%" href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener">
+          Ir a la tienda en ML
         </a>
       </li>
     </ul>
@@ -271,149 +447,171 @@
 
   <section id="hero">
     <div class="hero-bg"></div>
-    <div class="container" style="display:contents;">
-      <div class="hero-content container" style="max-width:none;padding-left:max(32px,calc((100vw - 1240px)/2 + 32px));">
-        <span class="tag">Distribución en línea ✦ México</span>
-        <h1 class="hero-title">Calidad que<br><em>inspira</em> confianza</h1>
-        <p class="hero-subtitle">
-          Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías.
-          Operamos a través de Mercado Libre para ofrecer pagos seguros, protección al comprador y envíos confiables en todo México.
-        </p>
-        <div class="hero-actions">
-          <a href="#catalog" class="btn btn-primary">Ver Catálogo
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-outline">Comprar en Mercado Libre</a>
-        </div>
+    <div class="container hero-left">
+      <div class="pill">Distribución en línea • México</div>
+
+      <h1 class="hero-title">Tienda online confiable para comprar con seguridad</h1>
+
+      <p class="hero-subtitle">
+        Somos una empresa mexicana dedicada a la venta y distribución de productos originales en diversas categorías.
+        Todas las compras se realizan a través de Mercado Libre para brindar pagos seguros, protección al comprador y envíos confiables en todo México.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#catalog">Ver catálogo</a>
+        <a class="btn btn-outline" href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener">Comprar en Mercado Libre</a>
       </div>
 
-      <div class="hero-media" style="padding-right:max(32px,calc((100vw - 1240px)/2 + 32px));">
-        <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop" alt="Producto destacado" loading="eager"/></div>
-        <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&auto=format&fit=crop" alt="Libros" loading="eager"/></div>
-        <div class="hero-img-wrap"><img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&auto=format&fit=crop" alt="Juguetes" loading="eager"/></div>
+      <div class="hero-badges">
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M9 12l2 2 4-4"></path>
+          </svg>
+          <span>Compra protegida</span>
+        </div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <span>Envíos a todo México</span>
+        </div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="12" y1="18" x2="12" y2="12"></line>
+            <line x1="9" y1="15" x2="15" y2="15"></line>
+          </svg>
+          <span>Facturación disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hero-right">
+      <div class="hero-cards">
+        <div class="hero-card big">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=900&auto=format&fit=crop" alt="Producto destacado" loading="eager" />
+        </div>
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&auto=format&fit=crop" alt="Libros" loading="eager" />
+        </div>
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=600&auto=format&fit=crop" alt="Juguetes" loading="eager" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar" id="stats">
+  <div class="stats" id="stats">
     <div class="container">
       <div class="stats-grid">
-
-        <div class="stat-item">
-          <div class="stat-number">2500+</div>
-          <div class="stat-label">Ventas realizadas</div>
-          <div class="stat-sub">Experiencia operando en línea</div>
+        <div class="stat">
+          <div class="num">2500+</div>
+          <div class="lbl">Ventas realizadas</div>
         </div>
 
-        <div class="stat-item">
-          <div class="ml-trust">
-            <div class="ml-trust-pill" style="justify-content:center;">
-              <span class="ml-trust-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="M9 12l2 2 4-4"/>
-                </svg>
-              </span>
-              <span class="ml-trust-text">
-                <div class="ml-trust-title">Compra segura</div>
-                <div class="ml-trust-desc">Pagos protegidos vía Mercado Libre</div>
-              </span>
-            </div>
+        <div class="trust-pill" aria-label="Compra segura">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <path d="M9 12l2 2 4-4"></path>
+            </svg>
           </div>
-          <div class="stat-label">Operación con respaldo</div>
-          <div class="stat-sub">Protección al comprador y seguimiento</div>
+          <div class="trust-text">
+            <strong>Compra segura</strong>
+            <small>Pagos protegidos y seguimiento vía Mercado Libre</small>
+          </div>
         </div>
 
-        <div class="stat-item">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Años de experiencia</div>
-          <div class="stat-sub">Venta y distribución online</div>
+        <div class="stat">
+          <div class="num">5+</div>
+          <div class="lbl">Años de experiencia</div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- TRUST BADGES -->
-  <section class="trust-section">
-    <div class="container">
-      <div class="trust-grid">
-        <div class="trust-badge">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <div class="trust-title">Compra protegida</div>
-          <div class="trust-desc">Pagos y protección al comprador a través de Mercado Libre</div>
-        </div>
-
-        <div class="trust-badge">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <div class="trust-title">Envíos a todo México</div>
-          <div class="trust-desc">Seguimiento y entrega confiable en toda la República</div>
-        </div>
-
-        <div class="trust-badge">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <div class="trust-title">Operación confiable</div>
-          <div class="trust-desc">Venta transparente y atención directa en cada compra</div>
-        </div>
-
-        <div class="trust-badge">
-          <div class="trust-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="12" y1="18" x2="12" y2="12"/>
-              <line x1="9" y1="15" x2="15" y2="15"/>
-            </svg>
-          </div>
-          <div class="trust-title">Facturación disponible</div>
-          <div class="trust-desc">Solicita tu factura conforme a la normativa vigente</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="featured">
     <div class="container">
       <div class="section-header">
-        <span class="tag">Productos Destacados</span>
-        <h2 class="section-title">Lo más <em>popular</em></h2>
-        <p class="section-desc">Una selección de productos destacados. Cada botón te lleva directo a Mercado Libre.</p>
+        <div class="kicker">Destacados</div>
+        <div class="section-title">Productos recomendados</div>
+        <div class="section-desc">Cada producto te lleva directo a su publicación en Mercado Libre.</div>
+
+        <div class="trust-row">
+          <div class="trust-card">
+            <div class="top">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="t">Compra protegida</div>
+            </div>
+            <div class="d">Pagos y protección al comprador a través de Mercado Libre.</div>
+          </div>
+
+          <div class="trust-card">
+            <div class="top">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                </svg>
+              </div>
+              <div class="t">Envíos confiables</div>
+            </div>
+            <div class="d">Entrega con seguimiento según el envío del producto.</div>
+          </div>
+
+          <div class="trust-card">
+            <div class="top">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="t">Operación confiable</div>
+            </div>
+            <div class="d">Atención directa y proceso claro en cada compra.</div>
+          </div>
+
+          <div class="trust-card">
+            <div class="top">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+              <div class="t">Facturación</div>
+            </div>
+            <div class="d">Solicita tu factura conforme a la normativa vigente.</div>
+          </div>
+        </div>
       </div>
-      <div class="products-grid" id="featuredGrid"></div>
-      <div class="view-all-wrap"><a href="#catalog" class="btn btn-outline">Ver todo el catálogo</a></div>
+
+      <div class="grid" id="featuredGrid"></div>
     </div>
   </section>
 
   <section id="catalog">
     <div class="container">
       <div class="section-header">
-        <span class="tag">Catálogo Completo</span>
-        <h2 class="section-title">Todos nuestros <em>productos</em></h2>
-        <p class="section-desc">Explora nuestra selección. Cada producto enlaza directamente a su publicación en Mercado Libre.</p>
+        <div class="kicker">Catálogo</div>
+        <div class="section-title">Explora todos los productos</div>
+        <div class="section-desc">Catálogo informativo: la compra se realiza en Mercado Libre.</div>
       </div>
-      <div class="catalog-grid" id="catalogGrid"></div>
-      <div class="view-all-wrap" style="margin-top:52px;">
-        <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">
+
+      <div class="grid" id="catalogGrid"></div>
+
+      <div style="margin-top:22px;display:flex;justify-content:flex-start">
+        <a class="btn btn-ml" href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener">
           Ver toda la tienda en Mercado Libre
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
-          </svg>
         </a>
       </div>
     </div>
@@ -422,35 +620,35 @@
   <section id="faq">
     <div class="container">
       <div class="section-header">
-        <span class="tag">Información</span>
-        <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
-        <p class="section-desc">Resolvemos dudas comunes sobre compras, envíos y facturación.</p>
+        <div class="kicker">Información</div>
+        <div class="section-title">Preguntas frecuentes</div>
+        <div class="section-desc">Resolvemos dudas comunes sobre compras, envíos y facturación.</div>
       </div>
 
       <div class="faq-wrap">
-        <details class="faq-item">
-          <summary><span class="faq-q">¿Es seguro comprar?</span><span class="faq-plus">+</span></summary>
-          <div class="faq-a">Sí. Las compras se realizan a través de Mercado Libre, lo que permite pagos seguros, protección al comprador y seguimiento del envío.</div>
+        <details class="faq">
+          <summary><span>¿Es seguro comprar?</span><span class="plus">+</span></summary>
+          <div class="ans">Sí. Las compras se realizan a través de Mercado Libre, lo que permite pagos seguros, protección al comprador y seguimiento del envío.</div>
         </details>
 
-        <details class="faq-item">
-          <summary><span class="faq-q">¿Dónde se realiza el pago?</span><span class="faq-plus">+</span></summary>
-          <div class="faq-a">El pago se procesa dentro de Mercado Libre. No solicitamos pagos fuera de la plataforma.</div>
+        <details class="faq">
+          <summary><span>¿Dónde se realiza el pago?</span><span class="plus">+</span></summary>
+          <div class="ans">El pago se procesa dentro de Mercado Libre. No solicitamos pagos fuera de la plataforma.</div>
         </details>
 
-        <details class="faq-item">
-          <summary><span class="faq-q">¿Los productos son originales?</span><span class="faq-plus">+</span></summary>
-          <div class="faq-a">Sí. Trabajamos con productos originales y proveedores confiables, priorizando calidad y seriedad comercial.</div>
+        <details class="faq">
+          <summary><span>¿Los productos son originales?</span><span class="plus">+</span></summary>
+          <div class="ans">Sí. Trabajamos con productos originales y proveedores confiables.</div>
         </details>
 
-        <details class="faq-item">
-          <summary><span class="faq-q">¿Hacen envíos a todo México?</span><span class="faq-plus">+</span></summary>
-          <div class="faq-a">Sí. Los envíos se gestionan por Mercado Libre y normalmente incluyen seguimiento (según el tipo de envío del producto).</div>
+        <details class="faq">
+          <summary><span>¿Hacen envíos a todo México?</span><span class="plus">+</span></summary>
+          <div class="ans">Sí. Los envíos se gestionan por Mercado Libre y normalmente incluyen seguimiento (según el tipo de envío del producto).</div>
         </details>
 
-        <details class="faq-item">
-          <summary><span class="faq-q">¿Puedo solicitar factura?</span><span class="faq-plus">+</span></summary>
-          <div class="faq-a">Sí. Emitimos factura conforme a la normativa fiscal vigente. Puedes solicitarla después de tu compra.</div>
+        <details class="faq">
+          <summary><span>¿Puedo solicitar factura?</span><span class="plus">+</span></summary>
+          <div class="ans">Sí. Emitimos factura conforme a la normativa fiscal vigente. Puedes solicitarla después de tu compra.</div>
         </details>
       </div>
     </div>
@@ -459,113 +657,117 @@
   <section id="contact">
     <div class="container">
       <div class="section-header">
-        <span class="tag">Contáctanos</span>
-        <h2 class="section-title">Estamos <em>para ayudarte</em></h2>
-        <p class="section-desc">¿Tienes preguntas sobre algún producto? Escríbenos o visita nuestra tienda en Mercado Libre.</p>
+        <div class="kicker" style="color:rgba(255,255,255,.75)">Contacto</div>
+        <div class="section-title" style="color:#fff">¿Necesitas ayuda?</div>
+        <div class="section-desc">Puedes escribirnos por correo o visitar nuestra tienda en Mercado Libre.</div>
       </div>
 
       <div class="contact-grid">
         <div class="contact-card">
-          <div class="contact-label">Correo electrónico</div>
-          <div class="contact-value">contacto@tiendadigitalcdmx.com.mx</div>
-          <a href="mailto:contacto@tiendadigitalcdmx.com.mx" class="btn btn-outline" style="color:var(--warm-white);border-color:rgba(191,184,173,0.35);">Enviar correo</a>
+          <div class="lbl">Correo electrónico</div>
+          <div class="val">contacto@tiendadigitalcdmx.com.mx</div>
+          <a class="btn btn-outline" style="border-color:rgba(255,255,255,.28);color:#fff" href="mailto:contacto@tiendadigitalcdmx.com.mx">Enviar correo</a>
         </div>
 
         <div class="contact-card">
-          <div class="contact-label">Nuestra tienda</div>
-          <div class="contact-value">Mercado Libre México</div>
-          <a href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener" class="btn btn-ml">Ir a la tienda</a>
+          <div class="lbl">Nuestra tienda</div>
+          <div class="val">Mercado Libre México</div>
+          <a class="btn btn-ml" href="https://www.mercadolibre.com.mx/pagina/tiendadigitalcdmx#from=share_eshop" target="_blank" rel="noopener">Ir a la tienda</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container footer-inner">
-      <div class="footer-logo">TIENDADIGITAL <span>CDMX</span></div>
-      <ul class="footer-links">
+    <div class="container foot">
+      <div class="brand">TIENDADIGITAL <span>CDMX</span></div>
+      <ul class="foot-links">
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#featured">Productos</a></li>
         <li><a href="#catalog">Catálogo</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contacto</a></li>
       </ul>
-      <div class="footer-copy">© 2026 TIENDADIGITAL CDMX. Todos los derechos reservados.</div>
+      <div style="font-weight:700;font-size:.82rem">© 2026 TiendaDigital CDMX</div>
     </div>
   </footer>
 
   <script>
+    // Navbar shadow
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
 
-    const menuToggle = document.getElementById('menuToggle'),
-          mobileMenu = document.getElementById('mobileMenu');
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-    // --- Helpers de estrellas ---
-    function renderStars(rating) {
-      const r = Number(rating);
-      if (!Number.isFinite(r) || r <= 0) return ''; // si no hay rating, no mostramos estrellas
-      const full = Math.round(r); // redondeo simple (puedes cambiar si quieres medios)
-      const max = 5;
-      let html = '<div class="product-rating" aria-label="Calificación del producto">';
-      html += '<div class="stars">';
-      for (let i = 1; i <= max; i++) {
-        html += i <= full ? '<span class="star-full">★</span>' : '<span class="star-empty">★</span>';
+    // --- Rating helpers ---
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    // Si NO hay rating: mostramos 5 estrellas vacías + "Sin calificación visible" (sin inventar).
+    function ratingBlock(p){
+      const has = Number.isFinite(Number(p.rating));
+      const r = has ? clamp(Number(p.rating), 0, 5) : 0;
+      const full = has ? Math.round(r) : 0;
+
+      let stars = '<div class="stars" aria-label="Estrellas">';
+      for(let i=1;i<=5;i++){
+        const cls = (has && i<=full) ? 'star-full' : 'star-empty';
+        stars += `<span class="${cls}">★</span>`;
       }
-      html += '</div>';
-      html += '</div>';
-      return html;
+      stars += '</div>';
+
+      const text = has
+        ? `${r.toFixed(1)} / 5${Number.isFinite(Number(p.reviews)) ? ` • ${Number(p.reviews).toLocaleString('es-MX')} reseñas` : ''}`
+        : 'Sin calificación visible';
+
+      return `<div class="rating">${stars}<div class="rtext">${text}</div></div>`;
     }
 
-    async function loadProducts() {
+    function cardHTML(p){
+      const sold = (Number(p.stock) === 0) ? '<div class="soldout">Agotado</div>' : '';
+      const price = Number(p.precio);
+      const priceHTML = Number.isFinite(price) ? `$${price.toLocaleString('es-MX')}` : '';
+      const btnText = (Number(p.stock) === 0) ? 'Ver publicación' : 'Comprar';
+
+      return `
+        <div class="card">
+          <div class="thumb">
+            <div class="chip">${p.categoria || 'Producto'}</div>
+            ${sold}
+            <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" />
+          </div>
+          <div class="info">
+            ${ratingBlock(p)}
+            <div class="name">${p.nombre}</div>
+            <div class="desc">${p.descripcion || ''}</div>
+            <div class="price">${priceHTML}</div>
+            <a class="buy" href="${p.link_ml}" target="_blank" rel="noopener">
+              ${btnText} <span class="ml-tag">ML</span>
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    async function loadProducts(){
       let productos = [];
-      try {
-        const res = await fetch('productos.json');
-        if (res.ok) {
+      try{
+        const res = await fetch('productos.json', {cache:'no-store'});
+        if(res.ok){
           const json = await res.json();
-          productos = json.filter(p => p.activo);
+          productos = (Array.isArray(json) ? json : []).filter(p => p.activo !== false);
         }
-      } catch(e) {}
+      }catch(e){
+        // Si falla, se queda vacío (no truena)
+        productos = [];
+      }
 
-      // Si no cargó, queda vacío, pero no truena
-      const destacados = productos.filter(p => p.destacado).slice(0, 4);
-
-      document.getElementById('featuredGrid').innerHTML = destacados.map(buildCard).join('');
-      document.getElementById('catalogGrid').innerHTML = productos.map(buildCard).join('');
-    }
-
-    function buildCard(p) {
-      const stockBadge = p.stock === 0 ? '<span class="stock-badge">Agotado</span>' : '';
-      const btnText = p.stock === 0 ? 'Ver detalles' : 'Comprar';
-      const price = `<div class="product-price">$${Number(p.precio).toLocaleString('es-MX')}</div>`;
-
-      // rating: solo si existe en productos.json (NO inventamos)
-      const stars = (p.rating != null) ? renderStars(p.rating) : '';
-
-      // texto opcional: reseñas (solo si existe)
-      const reviews = (p.reviews != null && Number.isFinite(Number(p.reviews)))
-        ? `<div class="rating-text">${Number(p.reviews).toLocaleString('es-MX')} reseñas</div>`
-        : '';
-
-      const ratingBlock = stars
-        ? `<div class="product-rating">${stars.replace('<div class="product-rating" aria-label="Calificación del producto">','').replace('</div>','')}${reviews}</div>`
-        : '';
-
-      return `<div class="product-card">
-        <div class="product-img">
-          <span class="product-cat">${p.categoria}</span>${stockBadge}
-          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy"/>
-        </div>
-        <div class="product-info">
-          ${ratingBlock}
-          <h3 class="product-name">${p.nombre}</h3>
-          <p class="product-desc-short">${p.descripcion}</p>
-          ${price}
-          <a href="${p.link_ml}" target="_blank" rel="noopener" class="buy-btn">${btnText} <span class="ml-logo-sm">ML</span></a>
-        </div>
-      </div>`;
+      const destacados = productos.filter(p => p.destacado).slice(0,4);
+      document.getElementById('featuredGrid').innerHTML = destacados.map(cardHTML).join('');
+      document.getElementById('catalogGrid').innerHTML = productos.map(cardHTML).join('');
     }
 
     loadProducts();
