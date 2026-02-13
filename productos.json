@@ -164,7 +164,7 @@
     "stock": 61,
     "imagen": "https://http2.mlstatic.com/D_994001-MLM97667130589_112025-F.jpg",
     "link_ml": "https://articulo.mercadolibre.com.mx/MLM-4346432600",
-    "activo": true,
+    "activo": false,
     "destacado": false,
     "rating": 4.9
   },
