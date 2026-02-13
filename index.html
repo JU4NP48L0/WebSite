@@ -40,11 +40,11 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
-    
+
     .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.05em; background: var(--bg-accent);
       color: var(--text-secondary); border-radius: 100px; padding: 6px 14px; }
-    
+
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-size: 0.95rem; font-weight: 600; border-radius: var(--radius-sm); padding: 14px 28px;
       cursor: pointer; transition: all 0.2s ease; border: none; text-decoration: none;
@@ -144,11 +144,11 @@
     .stock-badge { position: absolute; top: 12px; right: 12px; background: var(--danger);
       color: white; border-radius: var(--radius-sm); padding: 6px 12px; font-size: 0.7rem;
       text-transform: uppercase; font-weight: 700; z-index: 2; letter-spacing: 0.05em; }
-    
+
     .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
     .stars { display: flex; gap: 2px; color: #FBBF24; font-size: 0.9rem; }
     .rating-text { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
-    
+
     .product-info { padding: 20px; }
     .product-name { font-size: 1rem; font-weight: 700; color: var(--text-primary);
       margin-bottom: 8px; line-height: 1.4; letter-spacing: -0.01em;
@@ -207,30 +207,25 @@
     .about-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800;
       line-height: 1.2; color: var(--text-primary); margin-bottom: 20px;
       letter-spacing: -0.02em; }
-    .about-title .highlight { 
-      color: var(--accent-light);
+    .about-title .highlight { color: var(--accent-light); }
+    .about-text { font-size: 1rem; line-height: 1.7; color: var(--text-secondary);
+      margin-bottom: 16px; }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
     }
 
-    .about-text { 
-      font-size: 1rem; 
-      line-height: 1.7; 
-      color: var(--text-secondary);
-      margin-bottom: 16px; 
-    }
-    .about-features { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 16px; 
-      margin: 28px 0; 
-    }
-    .feature-item { 
-      background: white; 
-      border-radius: var(--radius-sm); 
+    .feature-item {
+      background: white;
+      border-radius: var(--radius-sm);
       padding: 20px;
-      border: 1px solid var(--border); 
+      border: 1px solid var(--border);
       transition: all 0.25s ease;
     }
-    /* 👇 ICONO */
+
     .feature-icon{
       width: 36px;
       height: 36px;
@@ -241,14 +236,27 @@
       border-radius: 8px;
       font-size: 1.2rem;
       margin-bottom: 10px;
-    } 
-    /* 👇 TITULO */
-    .feature-title { 
-      font-size: 0.95rem; 
-      font-weight: 700; 
+    }
+
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 700;
       color: var(--text-primary);
-      margin-bott
-      
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .feature-item:hover{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--accent-light);
+    }
+
     #catalog { background: white; }
     .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
 
@@ -513,28 +521,30 @@
           <h2 class="about-title">Tu tienda de <span class="highlight">confianza</span></h2>
           <p class="about-text">Somos una tienda en l&iacute;nea mexicana especializada en ofrecer productos de calidad a trav&eacute;s de Mercado Libre. Nos enfocamos en brindar una excelente experiencia de compra.</p>
           <p class="about-text">Trabajamos d&iacute;a a d&iacute;a para mantener altos est&aacute;ndares de servicio, env&iacute;os seguros y atenci&oacute;n personalizada para cada uno de nuestros clientes.</p>
+
           <div class="about-features">
             <div class="feature-item">
               <div class="feature-icon">🛡️</div>
               <div class="feature-title">Compra protegida</div>
-              <div class="feature-desc">Pago seguro a través de Mercado Libre</div>
-            </div>     
+              <div class="feature-desc">Pago seguro a trav&eacute;s de Mercado Libre</div>
+            </div>
             <div class="feature-item">
               <div class="feature-icon">🚚</div>
-              <div class="feature-title">Envíos con seguimiento</div>
-              <div class="feature-desc">Rastreo y entrega segura en todo México</div>
-            </div>          
+              <div class="feature-title">Env&iacute;os con seguimiento</div>
+              <div class="feature-desc">Rastreo y entrega segura en todo M&eacute;xico</div>
+            </div>
             <div class="feature-item">
               <div class="feature-icon">📦</div>
               <div class="feature-title">Empaque cuidadoso</div>
-              <div class="feature-desc">Protección adecuada para que llegue perfecto</div>
+              <div class="feature-desc">Protecci&oacute;n adecuada para que llegue perfecto</div>
             </div>
             <div class="feature-item">
               <div class="feature-icon">🧾</div>
               <div class="feature-title">Factura y soporte</div>
-              <div class="feature-desc">Atención rápida + facturación disponible</div>
+              <div class="feature-desc">Atenci&oacute;n r&aacute;pida + facturaci&oacute;n disponible</div>
             </div>
           </div>
+
           <a href="#contact" class="btn btn-primary">Cont&aacute;ctanos</a>
         </div>
       </div>
@@ -565,7 +575,7 @@
         <h2 class="section-title">Preguntas <span class="highlight">frecuentes</span></h2>
         <p class="section-desc">Resolvemos las dudas m&aacute;s comunes.</p>
       </div>
-      
+
       <div class="faq-item">
         <button class="faq-question"><span>&iquest;Es seguro comprar?</span><span class="faq-toggle">+</span></button>
         <div class="faq-answer"><p>S&iacute;. Las compras se realizan a trav&eacute;s de Mercado Libre con protecci&oacute;n total al comprador.</p></div>
@@ -639,7 +649,7 @@
 
   <script>
     // Productos embebidos (fallback si falla fetch)
-    const PRODUCTS_FALLBACK = [{"id":"MLM2475656615","nombre":"C\\u00f3digo Flowkey Premium \\u2014 3 y 6 Meses","categoria":"General","descripcion":"C\\u00f3digos de 3 y 6 Meses Flowkey Premium. El c\\u00f3digo se entrega por chat privado de MercadoLibre.","precio":400,"stock":3,"imagen":"https://http2.mlstatic.com/D_727369-MLM93756212307_092025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2475656615","activo":true,"destacado":false,"rating":4.5},{"id":"MLM2741796477","nombre":"Lego Botanicals \\u2014 Ramo De Rosas Rosadas 10374","categoria":"Juguetes","descripcion":"Kit de construcci\\u00f3n de un ramo: Cultiva la alegr\\u00eda creativa con el set de construcci\\u00f3n para adulto...","precio":1699,"stock":17,"imagen":"https://http2.mlstatic.com/D_930199-MLA106304190464_022026-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2741796477","activo":true,"destacado":true,"rating":4.8},{"id":"MLM4685671630","nombre":"Lego Ninjago \\u2014 Mech De Batalla 104 Piezas","categoria":"Juguetes","descripcion":"Descubre el emocionante mundo de LEGO Ninjago con el Mech de Batalla 6465066. Este set incluye 104...","precio":349,"stock":8,"imagen":"https://http2.mlstatic.com/D_704711-MLA99542392082_122025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4685671630","activo":true,"destacado":true,"rating":4.9},{"id":"MLM4685749122","nombre":"Lego\\u00ae City \\u2014 Auto Deportivo Rojo 60448","categoria":"Juguetes","descripcion":"Descubre el emocionante mundo de Lego\\u00ae City con el Auto Deportivo Rojo 60448. Este set incluye 109...","precio":349,"stock":13,"imagen":"https://http2.mlstatic.com/D_806868-MLA99516422572_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4685749122","activo":true,"destacado":true,"rating":4.7},{"id":"MLM2199223391","nombre":"Dandadan \\u2014 Tomo / Volumen A Elegir (Panini)","categoria":"Libros","descripcion":"El precio es por tomo. Disponibles para env\\u00edo inmediato. Nuevos, en F\\u00edsico y en espa\\u00f1ol.","precio":99,"stock":6,"imagen":"https://mla-s1-p.mlstatic.com/884508-MLM80901598440_122024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2199223391","activo":true,"destacado":true,"rating":4.9},{"id":"MLM3189725246","nombre":"Pantuflas Tibur\\u00f3n Unisex \\u2014 Sharklas","categoria":"Moda","descripcion":"Estas pantuflas de tibur\\u00f3n son ideales para todas las edades, desde ni\\u00f1os hasta adultos. Hechas con ...","precio":384,"stock":2,"imagen":"https://mla-s1-p.mlstatic.com/919886-MLM77546481769_072024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-3189725246","activo":true,"destacado":false,"rating":4.6},{"id":"MLM4330023114","nombre":"5 Kits Brackets Azdent Mini Roth 0.018","categoria":"Ortodoncia","descripcion":"Descubre la excelencia en ortodoncia con los 5 Kits Brackets Azdent Mini Roth 0.018, dise\\u00f1ados meticulosamente","precio":349,"stock":164,"imagen":"https://http2.mlstatic.com/D_956811-MLA96973658162_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4330023114","activo":true,"destacado":false,"rating":4.7},{"id":"MLM4329897640","nombre":"5 Kits Brackets Azdent Mini Roth 0.022","categoria":"Ortodoncia","descripcion":"Brackets Azdent Mini Roth 0.022 con Hooks 3-4-5 (20 pcs por kit). Brackets met\\u00e1licos de alta precisi\\u00f3n","precio":349,"stock":157,"imagen":"https://http2.mlstatic.com/D_970258-MLM97351754491_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4329897640","activo":true,"destacado":true,"rating":4.8},{"id":"MLM4403773136","nombre":"Azdent 10 Arcos De Acero Inoxidable","categoria":"Ortodoncia","descripcion":"Arcos de Ortodoncia AZDENT \\u2013 10 piezas por paquete. Marca: AZDENT. Material: Acero inoxidable de al...","precio":99,"stock":28,"imagen":"https://http2.mlstatic.com/D_812237-MLM99144483937_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4403773136","activo":true,"destacado":true,"rating":4.6},{"id":"MLM2619525933","nombre":"Azdent Resorte Torsi\\u00f3n Ortodoncia 10 Pzs","categoria":"Ortodoncia","descripcion":"El resorte de torsi\\u00f3n para ortodoncia de la marca Azdent es una herramienta esencial para profesiona...","precio":129,"stock":1,"imagen":"https://http2.mlstatic.com/D_710069-MLM101190103449_122025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2619525933","activo":true,"destacado":false,"rating":4.5},{"id":"MLM4376381138","nombre":"Azdent Softclamp Grapa Abrazadera Dental 4 Pzs","categoria":"Ortodoncia","descripcion":"Este set incluye 4 piezas de resina de dos tama\\u00f1os diferentes, dise\\u00f1adas para conseguir un aislamiento","precio":249,"stock":5,"imagen":"https://http2.mlstatic.com/D_727403-MLM98639897667_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4376381138","activo":true,"destacado":false,"rating":4.7},{"id":"MLM2545275875","nombre":"Brackets Autoligables Azdent MBT 0.022","categoria":"Ortodoncia","descripcion":"Los Brackets Autoligables Azdent MBT 0.022 con Hooks 3-4-5 son la elecci\\u00f3n ideal para quienes buscan...","precio":449,"stock":102,"imagen":"https://azdentall.com/cdn/shop/files/11_bc030029-1514-4148-861f-7d17e039b364.jpg?v=1704163432&width=1946","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2545275875","activo":true,"destacado":false,"rating":4.8},{"id":"MLM4346432600","nombre":"Brackets Autoligables Azdent Roth 0.022","categoria":"Ortodoncia","descripcion":"Los Brackets Autoligables Azdent Roth 0.022 Con Hooks 3-4-5 son la elecci\\u00f3n ideal para quienes busca...","precio":449,"stock":61,"imagen":"https://http2.mlstatic.com/D_994001-MLM97667130589_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4346432600","activo":true,"destacado":true,"rating":4.9},{"id":"MLM4682483172","nombre":"Pack 5 Puntas Escalador Dental Ultras\\u00f3nico EMS","categoria":"Ortodoncia","descripcion":"Pack de 5 puntas para escalador dental ultras\\u00f3nico. Producto nuevo para uso profesional odont\\u00f3logi...","precio":399,"stock":1,"imagen":"https://http2.mlstatic.com/D_601157-MLM105185184867_012026-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4682483172","activo":true,"destacado":true,"rating":4.6},{"id":"3525920430","nombre":"Box Set Demon Slayer De Koyoharu Gotouge Serie Completa De 23 Tomos Panini 2023","categoria":"Libros","descripcion":"Box Set Demon Slayer De Koyoharu...","precio":2999,"stock":0,"imagen":"https://http2.mlstatic.com/D_715053-MLA79713349123_102024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-3525920430","activo":true,"destacado":true,"rating":4.9}];
+    const PRODUCTS_FALLBACK = [{"id":"MLM2475656615","nombre":"C\u00f3digo Flowkey Premium \u2014 3 y 6 Meses","categoria":"General","descripcion":"C\u00f3digos de 3 y 6 Meses Flowkey Premium. El c\u00f3digo se entrega por chat privado de MercadoLibre.","precio":400,"stock":3,"imagen":"https://http2.mlstatic.com/D_727369-MLM93756212307_092025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2475656615","activo":true,"destacado":false,"rating":4.5},{"id":"MLM2741796477","nombre":"Lego Botanicals \u2014 Ramo De Rosas Rosadas 10374","categoria":"Juguetes","descripcion":"Kit de construcci\u00f3n de un ramo: Cultiva la alegr\u00eda creativa con el set de construcci\u00f3n para adulto...","precio":1699,"stock":17,"imagen":"https://http2.mlstatic.com/D_930199-MLA106304190464_022026-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2741796477","activo":true,"destacado":true,"rating":4.8},{"id":"MLM4685671630","nombre":"Lego Ninjago \u2014 Mech De Batalla 104 Piezas","categoria":"Juguetes","descripcion":"Descubre el emocionante mundo de LEGO Ninjago con el Mech de Batalla 6465066. Este set incluye 104...","precio":349,"stock":8,"imagen":"https://http2.mlstatic.com/D_704711-MLA99542392082_122025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4685671630","activo":true,"destacado":true,"rating":4.9},{"id":"MLM4685749122","nombre":"Lego\u00ae City \u2014 Auto Deportivo Rojo 60448","categoria":"Juguetes","descripcion":"Descubre el emocionante mundo de Lego\u00ae City con el Auto Deportivo Rojo 60448. Este set incluye 109...","precio":349,"stock":13,"imagen":"https://http2.mlstatic.com/D_806868-MLA99516422572_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4685749122","activo":true,"destacado":true,"rating":4.7},{"id":"MLM2199223391","nombre":"Dandadan \u2014 Tomo / Volumen A Elegir (Panini)","categoria":"Libros","descripcion":"El precio es por tomo. Disponibles para env\u00edo inmediato. Nuevos, en F\u00edsico y en espa\u00f1ol.","precio":99,"stock":6,"imagen":"https://mla-s1-p.mlstatic.com/884508-MLM80901598440_122024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2199223391","activo":true,"destacado":true,"rating":4.9},{"id":"MLM3189725246","nombre":"Pantuflas Tibur\u00f3n Unisex \u2014 Sharklas","categoria":"Moda","descripcion":"Estas pantuflas de tibur\u00f3n son ideales para todas las edades, desde ni\u00f1os hasta adultos. Hechas con ...","precio":384,"stock":2,"imagen":"https://mla-s1-p.mlstatic.com/919886-MLM77546481769_072024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-3189725246","activo":true,"destacado":false,"rating":4.6},{"id":"MLM4330023114","nombre":"5 Kits Brackets Azdent Mini Roth 0.018","categoria":"Ortodoncia","descripcion":"Descubre la excelencia en ortodoncia con los 5 Kits Brackets Azdent Mini Roth 0.018, dise\u00f1ados meticulosamente","precio":349,"stock":164,"imagen":"https://http2.mlstatic.com/D_956811-MLA96973658162_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4330023114","activo":true,"destacado":false,"rating":4.7},{"id":"MLM4329897640","nombre":"5 Kits Brackets Azdent Mini Roth 0.022","categoria":"Ortodoncia","descripcion":"Brackets Azdent Mini Roth 0.022 con Hooks 3-4-5 (20 pcs por kit). Brackets met\u00e1licos de alta precisi\u00f3n","precio":349,"stock":157,"imagen":"https://http2.mlstatic.com/D_970258-MLM97351754491_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4329897640","activo":true,"destacado":true,"rating":4.8},{"id":"MLM4403773136","nombre":"Azdent 10 Arcos De Acero Inoxidable","categoria":"Ortodoncia","descripcion":"Arcos de Ortodoncia AZDENT \u2013 10 piezas por paquete. Marca: AZDENT. Material: Acero inoxidable de al...","precio":99,"stock":28,"imagen":"https://http2.mlstatic.com/D_812237-MLM99144483937_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4403773136","activo":true,"destacado":true,"rating":4.6},{"id":"MLM2619525933","nombre":"Azdent Resorte Torsi\u00f3n Ortodoncia 10 Pzs","categoria":"Ortodoncia","descripcion":"El resorte de torsi\u00f3n para ortodoncia de la marca Azdent es una herramienta esencial para profesiona...","precio":129,"stock":1,"imagen":"https://http2.mlstatic.com/D_710069-MLM101190103449_122025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2619525933","activo":true,"destacado":false,"rating":4.5},{"id":"MLM4376381138","nombre":"Azdent Softclamp Grapa Abrazadera Dental 4 Pzs","categoria":"Ortodoncia","descripcion":"Este set incluye 4 piezas de resina de dos tama\u00f1os diferentes, dise\u00f1adas para conseguir un aislamiento","precio":249,"stock":5,"imagen":"https://http2.mlstatic.com/D_727403-MLM98639897667_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4376381138","activo":true,"destacado":false,"rating":4.7},{"id":"MLM2545275875","nombre":"Brackets Autoligables Azdent MBT 0.022","categoria":"Ortodoncia","descripcion":"Los Brackets Autoligables Azdent MBT 0.022 con Hooks 3-4-5 son la elecci\u00f3n ideal para quienes buscan...","precio":449,"stock":102,"imagen":"https://azdentall.com/cdn/shop/files/11_bc030029-1514-4148-861f-7d17e039b364.jpg?v=1704163432&width=1946","link_ml":"https://articulo.mercadolibre.com.mx/MLM-2545275875","activo":true,"destacado":false,"rating":4.8},{"id":"MLM4346432600","nombre":"Brackets Autoligables Azdent Roth 0.022","categoria":"Ortodoncia","descripcion":"Los Brackets Autoligables Azdent Roth 0.022 Con Hooks 3-4-5 son la elecci\u00f3n ideal para quienes busca...","precio":449,"stock":61,"imagen":"https://http2.mlstatic.com/D_994001-MLM97667130589_112025-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4346432600","activo":true,"destacado":true,"rating":4.9},{"id":"MLM4682483172","nombre":"Pack 5 Puntas Escalador Dental Ultras\u00f3nico EMS","categoria":"Ortodoncia","descripcion":"Pack de 5 puntas para escalador dental ultras\u00f3nico. Producto nuevo para uso profesional odont\u00f3logi...","precio":399,"stock":1,"imagen":"https://http2.mlstatic.com/D_601157-MLM105185184867_012026-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-4682483172","activo":true,"destacado":true,"rating":4.6},{"id":"3525920430","nombre":"Box Set Demon Slayer De Koyoharu Gotouge Serie Completa De 23 Tomos Panini 2023","categoria":"Libros","descripcion":"Box Set Demon Slayer De Koyoharu...","precio":2999,"stock":0,"imagen":"https://http2.mlstatic.com/D_715053-MLA79713349123_102024-F.jpg","link_ml":"https://articulo.mercadolibre.com.mx/MLM-3525920430","activo":true,"destacado":true,"rating":4.9}];
 
     const navbar=document.getElementById('navbar');
     window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>20));
